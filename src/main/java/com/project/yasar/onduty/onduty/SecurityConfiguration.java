@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 
 import com.project.yasar.onduty.onduty.domain.Credential;
 import com.project.yasar.onduty.onduty.domain.User;
+import com.project.yasar.onduty.onduty.service.CredentialService;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -50,8 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         User user = new User("1", "1", "1", null);
         user = userService.createUser(user);
-        Credential credential = new Credential("cml","1","1","MOBIL","ACTIVE");
-        credential =credentialService.createCredential(credential);
+        Credential credential = new Credential("null","1","1","null","null");
+
+        credential = credentialService.createCredential(credential);
 
     }
 

@@ -19,12 +19,7 @@ public class Credential{
     @Column
     @Enumerated(EnumType.ORDINAL)
     private State state;
-    public Credential(User user, String username, String password, UserType userType) {
-        this.user = user;
-        this.username = username;
-        this.password = password;
-        this.userType = userType;
-    }
+
 
     public Credential() {
     }
