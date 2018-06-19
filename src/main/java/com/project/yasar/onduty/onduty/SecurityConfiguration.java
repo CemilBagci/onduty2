@@ -72,6 +72,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .accessDeniedPage("/access-denied");
     }
 
+   
     @Override
     public void configure(WebSecurity web) throws Exception {
         web

@@ -16,6 +16,7 @@ public class User {
     private String surname;
     @Column
     private String email;
+    
     @JoinColumn(name="user_id")
     @OneToMany(cascade = CascadeType.DETACH)
     private List<Role> roles = new ArrayList<Role>();

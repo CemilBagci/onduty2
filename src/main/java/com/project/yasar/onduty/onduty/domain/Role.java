@@ -15,6 +15,7 @@ public class Role {
     @Enumerated(EnumType.ORDINAL)
     private State state;
 
+    
     @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Right> rights = new ArrayList<Right>();

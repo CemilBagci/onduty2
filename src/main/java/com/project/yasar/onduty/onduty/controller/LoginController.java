@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.controller;
 
+import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,15 +21,16 @@ public class LoginController {
         modelAndView.setViewName("login");
         return modelAndView;
     }
- /*   @RequestMapping(value="/admin/index2", method = RequestMethod.GET)
+    
+    @RequestMapping(value="/admin/index2", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Credential credential = credentialService.findByUserUsername(auth.getName());
-        modelAndView.addObject("username", "Welcome " + credential.getUsername() + " " + credential.getPassword() + " ("  + ")");
+        User user = userService.findUserByUsername(auth.getName());
+        modelAndView.addObject("username", "Welcome " + user.getUsername() + " " + user.getPassword());
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/index2");
         return modelAndView;
-    }*/
+    }
 
 }

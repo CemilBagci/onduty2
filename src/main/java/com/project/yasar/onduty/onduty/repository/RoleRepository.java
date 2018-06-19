@@ -8,7 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 @Repository("roleRepository")
 public interface RoleRepository extends CrudRepository<Role,Long> {
 	
-	//?
 
 
 	
