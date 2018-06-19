@@ -16,14 +16,23 @@ public class User {
     private String surname;
     @Column
     private String email;
-    @JoinColumn
+    @JoinColumn(name="user_id")
     @OneToMany(cascade = CascadeType.DETACH)
     private List<Role> roles = new ArrayList<Role>();
-    public User(String name, String surname, String email,List<Role> roles) {
+    @Column
+    private String username;
+    @Column
+    private String password;
+    @Column
+    private State state;
+    public User(String name, String surname, String email, List<Role> roles, String username, String password,State state) {
         this.name = name;
         this.surname = surname;
         this.email = email;
-        this.roles=roles;
+        this.roles = roles;
+        this.username = username;
+        this.password = password;
+        this.state = state;
     }
 
     public User() {
@@ -67,5 +76,29 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }

@@ -3,9 +3,9 @@ package com.project.yasar.onduty.onduty;
 
 import javax.sql.DataSource;
 
-import com.project.yasar.onduty.onduty.domain.Credential;
+import com.project.yasar.onduty.onduty.domain.State;
 import com.project.yasar.onduty.onduty.domain.User;
-import com.project.yasar.onduty.onduty.service.CredentialService;
+import com.project.yasar.onduty.onduty.domain.UserType;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,8 +17,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -36,14 +34,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-    @Value("spring.queries.credentials-query=select id,username ,password , userType , state from  user where username=?")
-    private String credentialsQuery;
-
     @Autowired
     UserService userService;
-
-    @Autowired
-    CredentialService credentialService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
@@ -52,14 +44,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
-                .authoritiesByUsernameQuery(credentialsQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
 
-        User user = new User("1", "1", "1", null);
+        User user = new User("1","1","1",null,"1","1",State.ACTIVE);
         user = userService.createUser(user);
-        Credential credential = new Credential(null,"1","1",null,null);
-        credential = credentialService.createCredential(credential);
 
     }
 
