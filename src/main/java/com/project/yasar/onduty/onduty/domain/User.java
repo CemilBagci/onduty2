@@ -20,6 +20,10 @@ public class User {
     @JoinColumn(name="user_id")
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Role> roles = new ArrayList<Role>();
+    
+    
+    
+    
     @Column
     private String username;
     @Column
