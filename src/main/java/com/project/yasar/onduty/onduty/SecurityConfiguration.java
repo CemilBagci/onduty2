@@ -36,6 +36,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    @Value("spring.queries.credentials-query=select id,username ,password , userType , state from  user where username=?")
+    private String credentialsQuery;
+
     @Autowired
     UserService userService;
 
@@ -49,13 +52,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
+                .authoritiesByUsernameQuery(credentialsQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
 
         User user = new User("1", "1", "1", null);
         user = userService.createUser(user);
         Credential credential = new Credential(null,"1","1",null,null);
-
         credential = credentialService.createCredential(credential);
 
     }
