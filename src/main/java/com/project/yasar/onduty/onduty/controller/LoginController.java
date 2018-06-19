@@ -23,8 +23,8 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/admin/index2", method = RequestMethod.GET)
 
+/*
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)
     public ModelAndView home(){
         ModelAndView modelAndView = new ModelAndView();
@@ -36,6 +36,6 @@ public class LoginController {
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/index2");
         return modelAndView;
-    }
+    }*/
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
 @Service
 public interface RoleService {
 	Role createRole(Role role);
-	public Role findUserByRole(List<Role> roles);
+
 	
 	
 

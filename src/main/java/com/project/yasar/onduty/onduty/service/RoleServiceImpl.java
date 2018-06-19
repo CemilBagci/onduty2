@@ -9,21 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service("roleService")
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl {
 
 
-    @Autowired
-    private RoleRepository roleRepository;
-
-    @Override
-    public Role createRole(Role role) {
-        return roleRepository.save(role);
     }
 
-    @Override
-    public Role findUserByRole(List<Role> roles) {
 
-        return roleRepository.findByRole( roles);
-    }
-}
 
