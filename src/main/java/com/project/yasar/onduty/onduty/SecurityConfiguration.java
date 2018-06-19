@@ -39,6 +39,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    @Autowired
+    CredentialService credentialService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -51,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         User user = new User("1", "1", "1", null);
         user = userService.createUser(user);
-        Credential credential = new Credential("null","1","1","null","null");
+        Credential credential = new Credential(null,"1","1",null,null);
 
         credential = credentialService.createCredential(credential);
 
