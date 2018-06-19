@@ -18,8 +18,12 @@ public class User {
     private String email;
     
     @JoinColumn(name="user_id")
-    @OneToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Role> roles = new ArrayList<Role>();
+    
+    
+    
+    
     @Column
     private String username;
     @Column

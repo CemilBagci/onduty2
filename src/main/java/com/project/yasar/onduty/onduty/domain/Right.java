@@ -15,23 +15,13 @@ public class Right {
     @Enumerated(EnumType.ORDINAL)
     private State state;
 
-    @JoinColumn
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Role> roles = new ArrayList<Role>();
 
-    public Right(String name, State state, List<Role> roles) {
+    public Right(String name, State state) {
         this.name = name;
         this.state = state;
-        this.roles = roles;
+       
     }
 
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 
     public Right() {
     }
