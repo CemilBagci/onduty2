@@ -30,21 +30,19 @@ public class Task {
     @ManyToOne(cascade = CascadeType.DETACH)
     private Project project;
 
-    @JoinColumn(name = "personal_id")
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Personal> personals = new ArrayList<Personal>();
+    
     @Column
     private Date taskstartdate;
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, String assignerpersonal, TaskPriority taskpriority, Project project, List<Personal> personals, Date taskstartdate, Date taskenddate) {
+    public Task(String name, TaskStateType taskstatetype, String assignerpersonal, TaskPriority taskpriority, Project project,Date taskstartdate, Date taskenddate) {
         this.name = name;
         this.taskstatetype = taskstatetype;
         this.assignerpersonal = assignerpersonal;
         this.taskpriority = taskpriority;
         this.project = project;
-        this.personals = personals;
+  
         this.taskstartdate = taskstartdate;
         this.taskenddate = taskenddate;
     }
@@ -98,14 +96,6 @@ public class Task {
 
     public void setProject(Project project) {
         this.project = project;
-    }
-
-    public List<Personal> getPersonals() {
-        return personals;
-    }
-
-    public void setPersonals(List<Personal> personals) {
-        this.personals = personals;
     }
 
     public Date getTaskstartdate() {

@@ -12,23 +12,10 @@ public class Group {
     @Column
     private String groupName;
 
-    @JoinColumn
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Personal> personals = new ArrayList<Personal>();
-
-    public List<Personal> getPersonals() {
-        return personals;
-    }
-
-    public void setPersonals(List<Personal> personals) {
-        this.personals = personals;
-    }
-
-    public Group(String groupName, List<Personal> personals) {
+    public Group(String groupName) {
         this.groupName = groupName;
-        this.personals = personals;
+        
     }
-
     public Group() {
     }
 
