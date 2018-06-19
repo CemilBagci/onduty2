@@ -29,6 +29,14 @@ public class Credential{
     public Credential() {
     }
 
+    public Credential(User user, String username, String password, UserType userType, State state) {
+        this.user = user;
+        this.username = username;
+        this.password = password;
+        this.userType = userType;
+        this.state = state;
+    }
+
     public long getId() {
         return id;
     }
