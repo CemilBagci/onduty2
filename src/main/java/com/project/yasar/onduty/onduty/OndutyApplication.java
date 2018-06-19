@@ -8,5 +8,6 @@ public class OndutyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OndutyApplication.class, args);
+		
 	}
 }

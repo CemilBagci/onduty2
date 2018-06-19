@@ -14,10 +14,6 @@ public class Department {
 	@Column
 	private long departmentName;
 
-	@JoinColumn(name = "personal_id")
-	@ManyToMany(cascade = CascadeType.DETACH)
-	private List<Personal> personals = new ArrayList<Personal>();
-
 
 	public Department(long departmentName) {
 		super();
