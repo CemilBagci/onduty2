@@ -3,9 +3,12 @@ package com.project.yasar.onduty.onduty;
 
 import javax.sql.DataSource;
 
+import com.project.yasar.onduty.onduty.domain.Role;
 import com.project.yasar.onduty.onduty.domain.State;
 import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.domain.UserType;
+import com.project.yasar.onduty.onduty.repository.UserRepository;
+import com.project.yasar.onduty.onduty.service.RoleService;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +20,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -37,6 +42,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
+    @Autowired
+    RoleService roleService;
+    @Autowired
+    UserRepository userRepository;
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -44,11 +53,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 jdbcAuthentication()
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
-                .dataSource(dataSource)
-                .passwordEncoder(bCryptPasswordEncoder);
-
-        User user = new User("1","1","1",null,"1","1",State.ACTIVE);
-        user = userService.createUser(user);
+                .dataSource(dataSource);
+        userRepository.deleteAll();
+        Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
+        if (roleAdmin == null) {
+            roleAdmin = new Role("ROLE_ADMIN", State.ACTIVE, Collections.singletonList(null));
+            roleAdmin = roleService.createRole(roleAdmin);
+        }
+        User user = userService.findUserByUsernameEquals("1");
+        if (user == null) {
+            user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
+            user = userService.createUser(user);
+        }
 
     }
 
@@ -69,10 +85,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/access-denied");
+                .accessDeniedPage("/access-denied").and().httpBasic()   ;
     }
 
-   
     @Override
     public void configure(WebSecurity web) throws Exception {
         web

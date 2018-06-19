@@ -8,8 +8,5 @@ import java.util.List;
 @Service
 public interface RoleService {
 	Role createRole(Role role);
-
-	
-	
-
+	Role findRoleByRoleNameEquals(String roleName);
 }
