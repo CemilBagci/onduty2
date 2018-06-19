@@ -14,8 +14,6 @@ public class Project {
 	 @Column
 	    private String name;
 	 @Column
-	    private String surname;
-	 @Column
 	    private Date starttime;
 	 @Column
 	    private Date enddate;
