@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("roleService")
 public class RoleServiceImpl implements RoleService {
+
 
     @Autowired
     private RoleRepository roleRepository;
@@ -15,6 +18,12 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role createRole(Role role) {
         return roleRepository.save(role);
+    }
+
+    @Override
+    public Role findUserByRole(List<Role> roles) {
+
+        return roleRepository.findByRole( roles);
     }
 }
 
