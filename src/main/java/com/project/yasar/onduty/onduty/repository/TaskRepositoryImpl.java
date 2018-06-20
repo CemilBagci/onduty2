@@ -11,7 +11,7 @@ public class TaskRepositoryImpl implements TaskRepository {
 	}
 
 	@Override
-	public Task getAssignerpersonal(String assignerpersonal) {
+	public String  getAssignerpersonal(String assignerpersonal) {
 		return null;
 	}
 
