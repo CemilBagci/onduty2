@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 public interface TaskService {
 	Task createTask(Task task);
 	Task findTaskByNameEquals(String name);
+	Task  getAssignerpersonal(String assignerpersonal);
 
 	
 	

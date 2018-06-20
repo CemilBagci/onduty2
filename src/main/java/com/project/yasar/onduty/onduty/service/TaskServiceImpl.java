@@ -23,6 +23,11 @@ public class TaskServiceImpl implements TaskService {
     public Task findTaskByNameEquals(String name) {
         return taskRepository.findTaskByNameEquals(name);
     }
+
+    @Override
+    public Task getAssignerpersonal(String assignerpersonal) {
+        return null;
+    }
 }
 
 
