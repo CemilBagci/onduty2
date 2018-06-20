@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository("taskRepository")
 public interface TaskRepository extends CrudRepository<Task,Long> {
 			Task findTaskByNameEquals(String name);
-			Task  getAssignerpersonal(String assignerpersonal);
+			String  getAssignerpersonal(String assignerpersonal);
 
 }
