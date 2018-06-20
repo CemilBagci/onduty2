@@ -20,8 +20,8 @@ public class PersonalServiceImpl implements PersonalService {
     @Override
     
     
-    public Personal findPersonalByPersonalId(String personalid) {
-        return personalRepository.findPersonalByPersonalId(personalid);
+    public Personal findPersonalByPersonalId(String id) {
+        return personalRepository.findPersonalByPersonalId(id);
     }
 }
 
