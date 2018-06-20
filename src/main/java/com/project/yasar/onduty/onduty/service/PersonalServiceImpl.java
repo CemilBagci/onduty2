@@ -18,11 +18,11 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
-    
-    
-    public Personal findPersonalByPersonalId(String id) {
-        return personalRepository.findPersonalByPersonalId(id);
+    public Personal findPersonalById(String id) {
+        return personalRepository.findPersonalById(id);
     }
+
+
 }
 
 

@@ -14,7 +14,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class TaskController {
-    @Autowired
+    /*@Autowired
     private TaskService taskService;
     @RequestMapping(value={"/", "/tasks"}, method = RequestMethod.GET)
     public ModelAndView tasks(){
@@ -27,7 +27,7 @@ public class TaskController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("tasks");
         return modelAndView;
-    }
+    }*/
 
 /*
     @RequestMapping(value="/admin/home", method = RequestMethod.GET)

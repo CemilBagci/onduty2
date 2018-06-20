@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface TaskService {
 	Task createTask(Task task);
-	Task findTaskByTaskName(String name);
+	Task findTaskByNameEquals(String name);
 
 	
 	

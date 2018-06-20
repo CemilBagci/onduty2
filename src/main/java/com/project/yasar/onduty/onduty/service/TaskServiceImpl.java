@@ -13,15 +13,15 @@ public class TaskServiceImpl implements TaskService {
     @Autowired
     TaskRepository taskRepository;
 
+
     @Override
     public Task createTask(Task task) {
         return taskRepository.save(task);
     }
 
     @Override
-    public Task findTaskByTaskName(String name) {
-        return taskRepository.findTaskByTaskName(name);
-        
+    public Task findTaskByNameEquals(String name) {
+        return taskRepository.findTaskByNameEquals(name);
     }
 }
 
