@@ -33,21 +33,7 @@ public class TaskServiceImpl implements TaskService {
         return null;
     }
     
-    @Override
-    public Date showTaskEndDate(Date taskenddate) {
-    	return  null;
-    }
-    
-    @Override
-    public Date showTaskStartDate(Date taskstartdate) {
-    	return  null;
-    }
-    
-    @Override
-    public Integer showTaskPriority(Integer taskpriority) {
-    	return null;
-    	
-    }
+
 
 }
 

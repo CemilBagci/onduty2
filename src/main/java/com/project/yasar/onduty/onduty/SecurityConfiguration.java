@@ -3,11 +3,9 @@ package com.project.yasar.onduty.onduty;
 
 import javax.sql.DataSource;
 
-import com.project.yasar.onduty.onduty.domain.Role;
-import com.project.yasar.onduty.onduty.domain.State;
-import com.project.yasar.onduty.onduty.domain.User;
-import com.project.yasar.onduty.onduty.domain.UserType;
+import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.repository.UserRepository;
+import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.RoleService;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     UserService userService;
-
+    @Autowired
+    PersonalService personalService;
     @Autowired
     RoleService roleService;
     @Autowired
@@ -54,7 +53,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery(usersQuery)
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource);
-        userRepository.deleteAll();
+        //userRepository.deleteAll();
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
         if (roleAdmin == null) {
             roleAdmin = new Role("ROLE_ADMIN", State.ACTIVE, Collections.singletonList(null));
@@ -64,6 +63,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         if (user == null) {
             user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
+        }
+        Personal personal = personalService.findPersonalByUser(user);
+        if(personal ==null) {
+            personal = new Personal(user, null, null, null);
+            personal = personalService.createPersonal(personal);
         }
 
     }
