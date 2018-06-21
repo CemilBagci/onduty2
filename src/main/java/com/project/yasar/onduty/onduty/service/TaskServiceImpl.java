@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service("taskService")
@@ -28,9 +29,26 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task getAssignerpersonal(String assignerpersonal) {
+    public String getAssignerpersonal(String assignerpersonal) {
         return null;
     }
+    
+    @Override
+    public Date showTaskEndDate(Date taskenddate) {
+    	return  null;
+    }
+    
+    @Override
+    public Date showTaskStartDate(Date taskstartdate) {
+    	return  null;
+    }
+    
+    @Override
+    public Integer showTaskPriority(Integer taskpriority) {
+    	return null;
+    	
+    }
+
 }
 
 

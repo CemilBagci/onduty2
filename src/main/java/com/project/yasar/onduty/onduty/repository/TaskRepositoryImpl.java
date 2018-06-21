@@ -1,5 +1,7 @@
 package com.project.yasar.onduty.onduty.repository;
 
+import java.util.Date;
+
 import com.project.yasar.onduty.onduty.domain.Task;
 
 public class TaskRepositoryImpl implements TaskRepository {
@@ -14,7 +16,21 @@ public class TaskRepositoryImpl implements TaskRepository {
 	public String  getAssignerpersonal(String assignerpersonal) {
 		return null;
 	}
-
+	
+	@Override
+	    public Date showTaskEndDate(Date taskenddate) {
+	    	return  null;
+	}
+	
+	@Override
+		public Date showTaskStartDate(Date taskstartdate) {
+		return null;
+	}
+	
+	@Override
+		public Integer showTaskPriority(Integer taskpriority) {
+		return null;
+	}
 	@Override
 	public <S extends Task> S save(S s) {
 		return null;
