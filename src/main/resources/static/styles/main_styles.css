@@ -95,11 +95,11 @@ a, a:hover, a:visited, a:active, a:link
 }
 a:hover
 {
-	color: #20d34a !important;
+	color: #efad49 !important;
 }
 ::selection
 {
-	color: #20d34a;
+	color: #efad49;
 }
 p::selection
 {
@@ -490,7 +490,7 @@ section
 {
 	font-size: 14px;
 	font-weight: 400;
-	color: #8f8e8e;
+	color: #4947b0;
 	padding-left: 3px;
 	margin-top: 2px;
 }
