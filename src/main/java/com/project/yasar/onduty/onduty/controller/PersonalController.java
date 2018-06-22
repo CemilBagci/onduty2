@@ -28,4 +28,5 @@ public class PersonalController {
         mav.addObject("contentForm","layouts/personalForm");
         return mav;
     }
+
 }
