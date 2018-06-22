@@ -13,6 +13,7 @@ public class MainController {
     public String services(){
         return "services";
     }
-
+    @RequestMapping("/profile")
+    public String profile(){return "profile";}
 
 }
