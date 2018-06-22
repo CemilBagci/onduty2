@@ -15,5 +15,10 @@ public class MainController {
     }
     @RequestMapping("/profile")
     public String profile(){return "profile";}
-
+    @RequestMapping("/task")
+    public String task(){return "task";}
+    @RequestMapping("/group")
+    public String group(){return "group";}
+    @RequestMapping("/message")
+    public String message(){return "message";}
 }
