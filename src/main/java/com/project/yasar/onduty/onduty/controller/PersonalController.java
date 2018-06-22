@@ -20,10 +20,11 @@ public class PersonalController {
     UserService userService;
     @RequestMapping(value = "personal/{username}",method = RequestMethod.GET)
     public ModelAndView showPersonal(@PathVariable("username") String username){
-        ModelAndView mav = new ModelAndView("personalForm");
+        ModelAndView mav = new ModelAndView("main");
         User user = userService.findUserByUsernameEquals(username);
         Personal personal = personalService.findPersonalByUser(user);
         mav.addObject("personal",personal);
+        mav.addObject("contentForm","layouts/personalForm");
         return mav;
     }
 }

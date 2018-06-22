@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Onduty</title>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="description" content="OnDuty demo project"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/styles/bootstrap4/bootstrap.min.css}"/>
+	<link th:href="@{/plugins/font-awesome-4.7.0/css/font-awesome.min.css}" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/plugins/OwlCarousel2-2.2.1/owl.carousel.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/plugins/OwlCarousel2-2.2.1/owl.theme.default.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/plugins/OwlCarousel2-2.2.1/animate.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/styles/main_styles.css}"/>
+	<link rel="stylesheet" type="text/css" th:href="@{/styles/responsive.css}"/>
+</head>
+<body>
+
+<div class="super_container">
+
+	<div th:replace="header :: header">
+
+	</div>
+
+	<div th:replace="content :: content">
+
+	</div>
+
+	<div th:replace="footer :: footer">
+
+	</div>
+
+
+
+</div>
+
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/styles/bootstrap4/popper.js}"></script>
+<script th:src="@{/styles/bootstrap4/bootstrap.min.js}"></script>
+<script th:src="@{/plugins/OwlCarousel2-2.2.1/owl.carousel.js}"></script>
+<script th:src="@{/plugins/easing/easing.js}"></script>
+<script th:src="@{/plugins/parallax-js-master/parallax.min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
+</body>
+</html>
