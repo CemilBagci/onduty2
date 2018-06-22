@@ -1,5 +1,8 @@
 package com.project.yasar.onduty.onduty.controller;
 
+import com.project.yasar.onduty.onduty.domain.User;
+import com.project.yasar.onduty.onduty.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
+    @Autowired
+    private UserService userService;
+
     private static String getUsername() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (!(authentication instanceof AnonymousAuthenticationToken)) {
@@ -22,9 +28,11 @@ public class MainController {
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("contentForm", "layouts/indexForm");
-        mav.addObject("username", getUsername());
+        User user = userService.findUserByUsernameEquals(getUsername());
+        mav.addObject("user", user);
         return mav;
     }
+
 
     @RequestMapping("/services")
     public String services() {

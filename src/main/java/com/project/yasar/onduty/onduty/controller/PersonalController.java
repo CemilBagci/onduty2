@@ -24,6 +24,7 @@ public class PersonalController {
         User user = userService.findUserByUsernameEquals(username);
         Personal personal = personalService.findPersonalByUser(user);
         mav.addObject("personal",personal);
+        mav.addObject("user", user);
         mav.addObject("contentForm","layouts/personalForm");
         return mav;
     }
