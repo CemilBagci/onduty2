@@ -5,12 +5,12 @@
                 <form th:object="${personal}">
                 <div>
                     <input class="form-control" th:field="*{user.name}" />
-                    <button type="button_name">Save</button>
                     <input class="form-control" th:field="*{user.surname}"/>
-                    <button type="button_surname">Save</button>
+
+                    <input class="form-control" th:each="department:*{departments}" th:value="${department.departmentName}"/>
                 </div>
 
-
+                    <button class="btn btn-info" type="button_surname">Save</button>
                 </form>
             </div>
         </div>

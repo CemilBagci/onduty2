@@ -1,7 +1,9 @@
 package com.project.yasar.onduty.onduty.controller;
 
+import com.project.yasar.onduty.onduty.domain.Department;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.User;
+import com.project.yasar.onduty.onduty.service.DepartmentService;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
@@ -19,6 +21,10 @@ public class PersonalController {
     PersonalService personalService;
     @Autowired
     UserService userService;
+
+    @Autowired
+    DepartmentService departmentService;
+
     @RequestMapping(value = "personal/{username}",method = RequestMethod.GET)
     public ModelAndView showPersonal(@PathVariable("username") String username){
         ModelAndView mav = new ModelAndView("main");

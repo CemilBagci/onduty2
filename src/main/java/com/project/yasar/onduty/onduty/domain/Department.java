@@ -12,11 +12,10 @@ public class Department {
 	private long id;
 
 	@Column
-	private long departmentName;
+	private String departmentName;
 
 
-	public Department(long departmentName) {
-		super();
+	public Department(String departmentName) {
 		this.departmentName = departmentName;
 	}
 
@@ -32,11 +31,11 @@ public class Department {
 		this.id = id;
 	}
 
-	public long getDepartmentName() {
+	public String getDepartmentName() {
 		return departmentName;
 	}
 
-	public void setDepartmentName(long departmentName) {
+	public void setDepartmentName(String departmentName) {
 		this.departmentName = departmentName;
 	}
 
