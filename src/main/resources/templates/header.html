@@ -11,7 +11,11 @@
                         <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
 
                             <div class="top_bar_item" style="right: 0; position: absolute;">
+                                <p>
+                                    <font face="Orange" size="3" color="maroon">
                                 <span th:text="${'Welcome ' + user.name + ' ' + user.surname}"></span>
+                                    </font>
+                                </p>
                                 <a th:href="@{/logout}">Logout</a>
                             </div>
                         </div>

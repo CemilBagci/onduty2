@@ -27,6 +27,7 @@ public class Personal {
     private List<Department> departments = new ArrayList<Department>();
 
 
+
     public List<Task> getTasks() {
         return tasks;
     }

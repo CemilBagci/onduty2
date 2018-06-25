@@ -3,9 +3,14 @@
         <div class="col">
             <div class="home_content_inner">
                 <form th:object="${personal}">
-                    <input class="form-control" th:field="*{user.username}" disabled="disabled"/>
-                    <input class="form-control" th:field="*{user.name}"/>
+                <div>
+                    <input class="form-control" th:field="*{user.name}" />
+                    <button type="button_name">Save</button>
                     <input class="form-control" th:field="*{user.surname}"/>
+                    <button type="button_surname">Save</button>
+                </div>
+
+
                 </form>
             </div>
         </div>
