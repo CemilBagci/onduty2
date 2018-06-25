@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 
 @Service("dummyDataService")
 @Transactional(readOnly = false)
@@ -45,10 +42,10 @@ private DepartmentService departmentService;
         departmentService.createDepartment(department);
         Personal personal = personalService.findPersonalByUser(user);
         if(personal ==null) {
-            personal = new Personal(user, null, null, Arrays.asList(department));
+            personal = new Personal(user, null, new ArrayList<>(), Arrays.asList(department));
             personal = personalService.createPersonal(personal);
         }
-        if (personal.getGroups()!=null && personal.getGroups().size()<10) {
+        if (personal.getGroups().size()<10) {
             Group group =new Group("group"+new Random().nextInt(50));
             groupRepository.save(group);
             personal.getGroups().add(group);
