@@ -6,7 +6,8 @@ import javax.persistence.*;
 public class Message {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id; //messageid
+	private long id; 
+	
 	@Column
 	private String messageContent;
 	

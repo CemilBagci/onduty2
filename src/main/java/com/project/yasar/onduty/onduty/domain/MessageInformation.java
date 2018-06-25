@@ -29,7 +29,6 @@ public class MessageInformation {
 	}
 
 	public MessageInformation() {
-		super();
 
 	}
 
