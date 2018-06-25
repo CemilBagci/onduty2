@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class PersonalController {
     @Autowired
     PersonalService personalService;
-
     @Autowired
     UserService userService;
     @RequestMapping(value = "personal/{username}",method = RequestMethod.GET)
@@ -32,3 +31,4 @@ public class PersonalController {
     }
 
 }
+

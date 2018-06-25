@@ -8,6 +8,7 @@ public interface TaskService {
 	Task createTask(Task task);
 	Task findTaskByNameEquals(String name);
 	String  getAssignerpersonal(String assignerpersonal);
+	Task get(Long taskId);
 
 	
 	

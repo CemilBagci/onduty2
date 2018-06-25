@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner">
+                <form th:object="${task}">
+                    <input class="form-control" th:field="*{id}" disabled="disabled"/>
+                     <input class="form-control" th:field="*{tasksname}"/>
+                    <input class="form-control" th:field="*{taskstatetype}"/>
+                    <input class="form-control" th:field="*{assignerpersonal}"/>
+                    <input class="form-control" th:field="*{project}"/>
+                    <input class="form-control" th:field="*{taskstartdate}"/>
+                     <input class="form-control" th:field="*{taskenddate}"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

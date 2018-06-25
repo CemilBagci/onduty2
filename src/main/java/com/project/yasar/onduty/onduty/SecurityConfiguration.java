@@ -4,10 +4,7 @@ package com.project.yasar.onduty.onduty;
 import javax.sql.DataSource;
 
 import com.project.yasar.onduty.onduty.domain.*;
-import com.project.yasar.onduty.onduty.repository.GroupRepository;
-import com.project.yasar.onduty.onduty.repository.PersonalRepository;
 import com.project.yasar.onduty.onduty.repository.UserRepository;
-import com.project.yasar.onduty.onduty.service.GroupService;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.RoleService;
 import com.project.yasar.onduty.onduty.service.UserService;
@@ -21,19 +18,17 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
-import java.util.Random;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter { 
 
-    @Autowired
+    @Autowired 
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
+    @Autowired 
     private DataSource dataSource;
 
     @Value("${spring.queries.users-query}")
@@ -41,8 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
-    @Autowired
-    GroupService groupService;
+
     @Autowired
     UserService userService;
     @Autowired
@@ -51,11 +45,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     RoleService roleService;
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    PersonalRepository personalRepository;
-    @Autowired
-    GroupRepository groupRepository;
-    @Transactional(readOnly = false)
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -65,6 +54,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource);
         //userRepository.deleteAll();
+        Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
+        if (roleAdmin == null) {
+            roleAdmin = new Role("ROLE_ADMIN", State.ACTIVE, Collections.singletonList(null));
+            roleAdmin = roleService.createRole(roleAdmin);
+        }
+        User user = userService.findUserByUsernameEquals("1");
+        if (user == null) {
+            user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
+            user = userService.createUser(user);
+            
+        }
+        Personal personal = personalService.findPersonalByUser(user);
+        if(personal ==null) {
+            personal = new Personal(user, null, null, null);
+            personal = personalService.createPersonal(personal);
+        }
 
     }
 

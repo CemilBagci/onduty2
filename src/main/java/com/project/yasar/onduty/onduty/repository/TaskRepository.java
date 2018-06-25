@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 public interface TaskRepository extends CrudRepository<Task,Long> {
 			Task findTaskByNameEquals(String name);
 
+
 }
