@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
+import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.repository.PersonalRepository;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 
 @Service("personalService")
@@ -24,6 +27,11 @@ public class PersonalServiceImpl implements PersonalService {
     @Override
     public Personal findPersonalByUser(User user) {
         return personalRepository.findPersonalByUser(user);
+    }
+
+    @Override
+    public Personal findPersonalByGroups(List<Group> groups) {
+        return personalRepository.findPersonalByGroups( groups);
     }
 
 
