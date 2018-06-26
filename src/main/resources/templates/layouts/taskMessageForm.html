@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner">
+                  <div th:each="taskMessage:${taskMessages}">
+                  <span class="form-control" th:text="${taskMessage.task.id}" disabled="disabled"/>
+                  <span class="form-control" th:text="${taskMessage.content}" disabled="disabled"/>
+                  <span class="form-control" th:text="${taskMessage.entryDate}" disabled="disabled"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
