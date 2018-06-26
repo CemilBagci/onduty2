@@ -37,14 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-    @Autowired
-    UserService userService;
-    @Autowired
-    PersonalService personalService;
-    @Autowired
-    RoleService roleService;
-    @Autowired
-    UserRepository userRepository;
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -54,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource);
         //userRepository.deleteAll();
-       
+
 
     }
 

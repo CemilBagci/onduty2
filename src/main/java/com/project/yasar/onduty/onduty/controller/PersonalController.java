@@ -36,5 +36,18 @@ public class PersonalController {
         return mav;
     }
 
+    @RequestMapping(value = "/personal",method = RequestMethod.POST)
+    public ModelAndView updatePersonal(@RequestParam Personal personal){
+        ModelAndView mav = new ModelAndView("main");
+        //Personal personal = personalService.updatePersonal(personal);
+        mav.addObject("personal",personal);
+        mav.addObject("contentForm","layouts/personalForm");
+
+
+
+        return mav;
+    }
+
+
 }
 

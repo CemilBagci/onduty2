@@ -5,6 +5,7 @@ import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.User;
+import com.project.yasar.onduty.onduty.domain.*;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,8 @@ public interface PersonalRepository extends CrudRepository<Personal,Long> {
 	 Personal findPersonalByUser(User user);
 	 Personal findPersonalByGroups(List<Group> groups);
 	 Personal findPersonalByDepartments(Department department);
-	 Personal findTaskByTaskName( Task task);
-	 Personal findPersonalByTasks(Task task);
-  
+
+
+
+
 }

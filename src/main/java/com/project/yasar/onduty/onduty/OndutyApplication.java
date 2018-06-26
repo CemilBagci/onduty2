@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 public class OndutyApplication {
 	@Autowired
 	DummyDataService dummyDataService;
-
 	public static void main(String[] args) {
 		SpringApplication.run(OndutyApplication.class, args);
 

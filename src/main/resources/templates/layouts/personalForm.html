@@ -2,15 +2,18 @@
     <div class="row">
         <div class="col">
             <div class="home_content_inner">
-                <form th:object="${personal}">
-                <div>
-                    <input class="form-control" th:field="*{user.name}" />
-                    <input class="form-control" th:field="*{user.surname}"/>
+                <form th:object="${personal}" th:action="@{/personal}" method="POST">
+                    <div>
+                        <input class="form-control" th:field="*{user.name}"/>
+                        <input class="form-control" th:field="*{user.surname}"/>
+                        <select class="selectpicker" multiple="multiple" data-container="body" id="departments">
+                            <option th:each="department:*{departments}"
+                                    th:text="${department.departmentName}"
+                                    th:value="${department.id}"></option>
+                        </select>
+                    </div>
 
-                    <input class="form-control" th:each="department:*{departments}" th:value="${department.departmentName}"/>
-                </div>
-
-                    <button class="btn btn-info" type="button">Save</button>
+                    <input class="btn btn-info" type="submit">Save</input>
                 </form>
             </div>
         </div>

@@ -26,8 +26,8 @@ public class DummyDataServiceImpl implements DummyDataService {
     private GroupRepository groupRepository;
     @Autowired
     private PersonalRepository personalRepository;
-    @Autowired
-    private DepartmentService departmentService;
+@Autowired
+private DepartmentService departmentService;
     @Override
     public void createDummyData() {
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
@@ -40,6 +40,7 @@ public class DummyDataServiceImpl implements DummyDataService {
             user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
         }
+
         Department department =new Department("officeeee");
         departmentService.createDepartment(department);
         Personal personal = personalService.findPersonalByUser(user);
@@ -53,10 +54,10 @@ public class DummyDataServiceImpl implements DummyDataService {
             personal.getGroups().add(group);
             personalRepository.save(personal);
         }
-        Task task = new Task("a", TaskStateType.ACTIVE, "ali", TaskPriority.high, null, null, null);
+         Task task = new Task("a", TaskStateType.ACTIVE, "ali", TaskPriority.high, null, null, null);
          task = taskService.createTask(task);
          personal.getTasks().add(task);
-         personalRepository.save(personal); 
-        
+         personalRepository.save(personal);
+
     }
 }

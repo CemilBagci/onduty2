@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
+import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.domain.Department;
 import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
@@ -12,9 +13,10 @@ import java.util.List;
 @Service
 public interface PersonalService {
 	Personal createPersonal(Personal personal);
+	Personal updatePersonal(Personal personal);
 	Personal findPersonalByUser(User user);
 	Personal findPersonalByGroups(List<Group> groups);
 	Personal findPersonalByDepartment(Department department);
-	Personal findPersonalByTask(Task task);
+
 
 }
