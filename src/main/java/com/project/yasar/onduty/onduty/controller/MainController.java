@@ -3,7 +3,11 @@ package com.project.yasar.onduty.onduty.controller;
 import com.project.yasar.onduty.onduty.ContextUtil;
 import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.service.UserService;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,11 +23,12 @@ public class MainController {
 
 
     @RequestMapping({"/", "/index"})
-    public ModelAndView index() {
+    public ModelAndView index(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("contentForm", "layouts/indexForm");
         User user = userService.findUserByUsernameEquals(ContextUtil.getUsername());
-        mav.addObject("user", user);
+        request.getSession().setAttribute("user", user);
+//        mav.addObject("user", user);
         return mav;
     }
 
