@@ -21,7 +21,7 @@ public class DummyDataServiceImpl implements DummyDataService {
     @Autowired
     private PersonalService personalService;
     @Autowired
-    private PersonalService taskService;
+    private TaskService taskService;
     @Autowired
     private GroupRepository groupRepository;
     @Autowired
@@ -54,8 +54,9 @@ public class DummyDataServiceImpl implements DummyDataService {
             personalRepository.save(personal);
         }
         Task task = new Task("a", TaskStateType.ACTIVE, "ali", TaskPriority.high, null, null, null);
-          
-    
+         task = taskService.createTask(task);
+         personal.getTasks().add(task);
+         personalRepository.save(personal);
           
     }
 }
