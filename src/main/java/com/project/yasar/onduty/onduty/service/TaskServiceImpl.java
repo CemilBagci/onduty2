@@ -24,8 +24,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public Task findTaskByNameEquals(String name) {
-        return taskRepository.findTaskByNameEquals(name);
+    public Task findTaskByTaskName(String name) {
+        return taskRepository.findTaskByTaskName(name);
     }
 
     @Override

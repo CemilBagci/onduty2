@@ -21,11 +21,13 @@ public class DummyDataServiceImpl implements DummyDataService {
     @Autowired
     private PersonalService personalService;
     @Autowired
+    private PersonalService taskService;
+    @Autowired
     private GroupRepository groupRepository;
     @Autowired
     private PersonalRepository personalRepository;
-@Autowired
-private DepartmentService departmentService;
+    @Autowired
+    private DepartmentService departmentService;
     @Override
     public void createDummyData() {
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
@@ -51,6 +53,9 @@ private DepartmentService departmentService;
             personal.getGroups().add(group);
             personalRepository.save(personal);
         }
-
+        Task task = new Task("a", TaskStateType.ACTIVE, "ali", TaskPriority.high, null, null, null);
+          
+    
+          
     }
 }

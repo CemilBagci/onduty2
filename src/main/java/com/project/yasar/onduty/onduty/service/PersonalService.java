@@ -3,6 +3,7 @@ package com.project.yasar.onduty.onduty.service;
 import com.project.yasar.onduty.onduty.domain.Department;
 import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
+import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.User;
 import org.springframework.stereotype.Service;
 
@@ -14,4 +15,5 @@ public interface PersonalService {
 	Personal findPersonalByUser(User user);
 	Personal findPersonalByGroups(List<Group> groups);
 	Personal findPersonalByDepartment(Department department);
+	Personal findPersonalByTask(Task task);
 }
