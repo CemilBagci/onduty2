@@ -16,4 +16,5 @@ public interface PersonalService {
 	Personal findPersonalByGroups(List<Group> groups);
 	Personal findPersonalByDepartment(Department department);
 	Personal findPersonalByTask(Task task);
+
 }
