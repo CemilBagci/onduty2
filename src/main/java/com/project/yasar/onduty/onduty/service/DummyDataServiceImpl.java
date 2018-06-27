@@ -16,18 +16,26 @@ import java.util.*;
 public class DummyDataServiceImpl implements DummyDataService {
     @Autowired
     private RoleService roleService;
+    
     @Autowired
     private UserService userService;
+    
     @Autowired
     private PersonalService personalService;
+    
     @Autowired
     private TaskService taskService;
+    
     @Autowired
     private GroupRepository groupRepository;
+    
     @Autowired
     private PersonalRepository personalRepository;
-@Autowired
-private DepartmentService departmentService;
+    
+    @Autowired   // burda autowired yoktu? *melisa
+	private DepartmentService departmentService;
+    
+    
     @Override
     public void createDummyData() {
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
@@ -44,8 +52,10 @@ private DepartmentService departmentService;
         Department department =new Department("officeeee");
         departmentService.createDepartment(department);
         Personal personal = personalService.findPersonalByUser(user);
+        List<Department> departments = new ArrayList<>();
+        departments.add(department);
         if(personal ==null) {
-            personal = new Personal(user, null, new ArrayList<>(), Arrays.asList(department));
+            personal = new Personal(user, null, new ArrayList<>(), departments);
             personal = personalService.createPersonal(personal);
         }
         if (personal.getGroups().size()<10) {
