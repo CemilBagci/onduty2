@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.controller;
 
+import com.project.yasar.onduty.onduty.ContextUtil;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.User;
@@ -29,12 +30,19 @@ public class TaskController {                        /*  Task createTask(Task ta
 	    TaskService taskService;
 
 	
-	    @RequestMapping(value = "task/{taskId}",method = RequestMethod.GET)
-	    public ModelAndView showPersonal(@PathVariable("taskId") Long taskId){
+	    @RequestMapping(value = "task/{id}",method = RequestMethod.GET)
+	    public ModelAndView showPersonal(@PathVariable("id") Long id){
 	        ModelAndView mav = new ModelAndView("main"); 
-	        Task task = taskService.get(taskId);
+	        Task task = taskService.get(id);
+	     
+	        
+	        
+	        
+	        mav.addObject("contentForm","layouts/task");
+	        
 	        mav.addObject("task",task);      
 	        mav.addObject("taskForm","layouts/taskForm");
+	        
 	        return mav;
 	    }
 
