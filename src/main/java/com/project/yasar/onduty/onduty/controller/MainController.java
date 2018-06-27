@@ -26,8 +26,7 @@ public class MainController {
     public ModelAndView index(HttpServletRequest request) {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("contentForm", "layouts/indexForm");
-        User user = userService.findUserByUsernameEquals(ContextUtil.getUsername());
-        request.getSession().setAttribute("user", user);
+
 //        mav.addObject("user", user);
         return mav;
     }

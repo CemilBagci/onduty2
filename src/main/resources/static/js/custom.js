@@ -10,8 +10,8 @@
 4. Init Home Slider
 5. Init SVG
 
-
-******************************/
+ owl-theme
+ ******************************/
 
 $(document).ready(function()
 {

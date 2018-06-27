@@ -6,12 +6,12 @@ import java.util.List;
 
 @Entity
 public class Personal {
-      @Id
-      @GeneratedValue(strategy=GenerationType.AUTO)
-       private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     @JoinColumn
-    @OneToOne(cascade = CascadeType.DETACH)
-      private User user;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
     @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
@@ -25,7 +25,6 @@ public class Personal {
     @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Department> departments = new ArrayList<Department>();
-
 
 
     public List<Task> getTasks() {
@@ -76,5 +75,10 @@ public class Personal {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return this.getUser().getName() + " " + this.getUser().getSurname();
     }
 }

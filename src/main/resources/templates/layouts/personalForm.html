@@ -6,7 +6,8 @@
                     <div>
                         <input class="form-control" th:field="*{user.name}"/>
                         <input class="form-control" th:field="*{user.surname}"/>
-                        <select class="selectpicker" multiple="multiple" data-container="body" id="departments">
+                        <input class="form-control" th:field="*{user.email}"/>
+                        <select class="selectpicker" multiple="multiple" data-container="content" id="departments">
                             <option th:each="department:*{departments}"
                                     th:text="${department.departmentName}"
                                     th:value="${department.id}"></option>

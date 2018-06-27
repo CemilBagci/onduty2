@@ -64,7 +64,8 @@ public class DummyDataServiceImpl implements DummyDataService {
             personal.getGroups().add(group);
             personalRepository.save(personal);
         }
-         Task task = new Task("a", TaskStateType.ACTIVE, "ali", TaskPriority.high, null, null, null);
+
+         Task task = new Task("a", TaskStateType.ACTIVE, personal, TaskPriority.high, null, null, null);
          task = taskService.createTask(task);
          personal.getTasks().add(task);
          personalRepository.save(personal);

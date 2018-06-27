@@ -16,7 +16,6 @@ public interface PersonalService {
 	Personal updatePersonal(Personal personal);
 	Personal findPersonalByUser(User user);
 	Personal findPersonalByGroups(List<Group> groups);
-	Personal findPersonalByDepartment(Department department);
-
+	Personal getCurrentPersonal();
 
 }

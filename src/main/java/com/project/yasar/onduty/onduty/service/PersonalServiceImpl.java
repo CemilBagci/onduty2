@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
+import com.project.yasar.onduty.onduty.ContextUtil;
 import com.project.yasar.onduty.onduty.domain.Department;
 import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
@@ -7,6 +8,7 @@ import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.repository.PersonalRepository;
+import com.project.yasar.onduty.onduty.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ import java.util.List;
 public class PersonalServiceImpl implements PersonalService {
     @Autowired
     PersonalRepository personalRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     @Transactional(readOnly = false)
@@ -28,7 +32,9 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
+    @Transactional(readOnly = false)
     public Personal updatePersonal(Personal personal) {
+        userRepository.save(personal.getUser());
         return personalRepository.save(personal);
     }
 
@@ -39,17 +45,15 @@ public class PersonalServiceImpl implements PersonalService {
 
     @Override
     public Personal findPersonalByGroups(List<Group> groups) {
-        return personalRepository.findPersonalByGroups( groups);
+        return personalRepository.findPersonalByGroups(groups);
     }
 
     @Override
-    public Personal findPersonalByDepartment(Department department) {
-        return personalRepository.findPersonalByDepartments(department);
+    public Personal getCurrentPersonal() {
+        if (ContextUtil.getUsername() != null)
+            return findPersonalByUser(userRepository.findUserByUsernameEquals(ContextUtil.getUsername()));
+        return null;
     }
-
-
-
-
 
 }
 

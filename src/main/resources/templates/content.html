@@ -2,26 +2,12 @@
 
     <!-- Home -->
 
-    <div class="home">
-        <div class="home_slider_container">
-            <!-- Home Slider -->
-            <div class="owl-carousel owl-theme home_slider">
-
-                <!-- Slider Item -->
-                <div class="owl-item">
-                    <div class="home_slider_background" style="background-image:url(/images/Project-Management.jpg)"></div>
-                    <div class="home_content">
-                        <div th:include="${contentForm}"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Boxes -->
 
     <div class="boxes">
-        <div class="container">
+        <div class="container" >
+            <div th:include="${contentForm}"></div>
             <div class="row">
                 <div class="col-lg-4 box_col">
                     <div class="box working_hours">

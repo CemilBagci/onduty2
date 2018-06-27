@@ -9,13 +9,12 @@ import com.project.yasar.onduty.onduty.service.UserService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+//@SessionAttributes("currentPersonal")
 public class PersonalController {
     @Autowired
     PersonalService personalService;
@@ -25,27 +24,23 @@ public class PersonalController {
     @Autowired
     DepartmentService departmentService;
 
-    @RequestMapping(value = "personal/{username}",method = RequestMethod.GET)
-    public ModelAndView showPersonal(@PathVariable("username") String username){
+    @ModelAttribute("personal")
+    public Personal getCurrentPersonal() {
+        return personalService.getCurrentPersonal();
+    }
+
+    @RequestMapping(value = "personal", method = RequestMethod.GET)
+    public ModelAndView showPersonal() {
         ModelAndView mav = new ModelAndView("main");
-        User user = userService.findUserByUsernameEquals(username);
-        Personal personal = personalService.findPersonalByUser(user);
-        mav.addObject("personal",personal);
-        mav.addObject("user", user);
-        mav.addObject("contentForm","layouts/personalForm");
+        mav.addObject("contentForm", "layouts/personalForm");
         return mav;
     }
 
-    @RequestMapping(value = "/personal",method = RequestMethod.POST)
-    public ModelAndView updatePersonal(@RequestParam Personal personal){
+    @RequestMapping(value = "/personal", method = RequestMethod.POST)
+    public ModelAndView updatePersonal(@ModelAttribute("personal") Personal personal) {
         ModelAndView mav = new ModelAndView("main");
-
-        //Personal personal = personalService.updatePersonal(personal);
-        mav.addObject("personal",personal);
-        mav.addObject("contentForm","layouts/personalForm");
-
-
-
+        mav.addObject("personal", personalService.updatePersonal(personal));
+        mav.addObject("contentForm", "layouts/personalForm");
         return mav;
     }
 

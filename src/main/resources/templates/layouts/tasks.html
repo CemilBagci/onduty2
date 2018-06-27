@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner col-sm-12 " >
+                <table class="table" style="background-color:white;">
+                    <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Task State</th>
+                        <th>Assigner</th>
+                        <th>Project</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task:${tasks}">
+                        <td   th:text="${task.name}"/>
+                        <td   th:text="${task.taskstatetype}"/>
+                        <td   th:text="${task.assignerpersonal}"/>
+                        <td   th:text="${task.project}"/>
+                        <td   th:text="${task.taskstartdate}"/>
+                        <td   th:text="${task.taskenddate}"/>
+                        <td>
+                            <span class="glyphicon glyphicon-search"></span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

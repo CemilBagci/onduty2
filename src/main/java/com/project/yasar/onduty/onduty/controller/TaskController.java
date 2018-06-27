@@ -19,23 +19,20 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
-public class TaskController {                        /*  Task createTask(Task task);
-                                                       Task findTaskByNameEquals(String name);
-                                                       String  getAssignerpersonal(String assignerpersonal);
+public class TaskController {
+    @Autowired
+    PersonalService personalService;
 
-	*/
-	
-	  @Autowired
-	    TaskService taskService;
+    @Autowired
+    TaskService taskService;
 
-	
-	    @RequestMapping(value = "task/{taskId}",method = RequestMethod.GET)
-	    public ModelAndView showPersonal(@PathVariable("taskId") Long taskId){
-	        ModelAndView mav = new ModelAndView("main"); 
-	        Task task = taskService.get(taskId);
-	        mav.addObject("task",task);      
-	        mav.addObject("taskForm","layouts/taskForm");
-	        return mav;
-	    }
+
+    @RequestMapping(value = "tasks", method = RequestMethod.GET)
+    public ModelAndView showPersonal() {
+        ModelAndView mav = new ModelAndView("main");
+        mav.addObject("tasks", personalService.getCurrentPersonal().getTasks());
+        mav.addObject("contentForm", "layouts/tasks");
+        return mav;
+    }
 
 }

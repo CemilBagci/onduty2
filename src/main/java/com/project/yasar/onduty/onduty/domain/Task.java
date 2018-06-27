@@ -19,8 +19,9 @@ public class Task {
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
 
-    @Column
-    private String assignerpersonal;
+    @JoinColumn(name = "personal_id")
+    @ManyToOne(cascade = CascadeType.DETACH)
+    private Personal assignerpersonal;
 
     @Column
     @Enumerated(EnumType.ORDINAL)
@@ -36,7 +37,7 @@ public class Task {
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, String assignerpersonal, TaskPriority taskpriority, Project project,Date taskstartdate, Date taskenddate) {
+    public Task(String name, TaskStateType taskstatetype, Personal assignerpersonal, TaskPriority taskpriority, Project project,Date taskstartdate, Date taskenddate) {
         this.name = name;
         this.taskstatetype = taskstatetype;
         this.assignerpersonal = assignerpersonal;
@@ -74,11 +75,11 @@ public class Task {
         this.taskstatetype = taskstatetype;
     }
 
-    public String getAssignerpersonal() {
+    public Personal getAssignerpersonal() {
         return assignerpersonal;
     }
 
-    public void setAssignerpersonal(String assignerpersonal) {
+    public void setAssignerpersonal(Personal assignerpersonal) {
         this.assignerpersonal = assignerpersonal;
     }
 
