@@ -10,7 +10,7 @@ public interface TaskService {
 
 	Task findTaskByTaskName(String name);
 	String  getAssignerpersonal(String assignerpersonal);
-	Task get(Long taskId);
+	Task get(Long id);
 
 
 

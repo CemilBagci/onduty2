@@ -2,14 +2,14 @@
     <div class="row">
         <div class="col">
             <div class="home_content_inner">
-                <form th:object="${task}">
-                    <input class="form-control" th:field="*{personal.taskid}" disabled="disabled"/>
-                     <input class="form-control" th:field="*{personal.tasksname}"/>
-                    <input class="form-control" th:field="*{personal.taskstatetype}"/>
-                    <input class="form-control" th:field="*{personal.assignerpersonal}"/>
-                    <input class="form-control" th:field="*{personal.project}"/>
-                    <input class="form-control" th:field="*{personal.taskstartdate}"/>
-                     <input class="form-control" th:field="*{personal.taskenddate}"/>
+                <form th:object="${personal}">
+                    <input class="form-control" th:field="*{task.id}" disabled="disabled"/>
+                     <input class="form-control" th:field="*{task.name}"/>
+                    <input class="form-control" th:field="*{task.taskstatetype}"/>
+                    <input class="form-control" th:field="*{task.assignerpersonal}"/>
+                    <input class="form-control" th:field="*{task.project}"/>
+                    <input class="form-control" th:field="*{task.taskstartdate}"/>
+                     <input class="form-control" th:field="*{task.taskenddate}"/>
                 </form>
             </div>
         </div>

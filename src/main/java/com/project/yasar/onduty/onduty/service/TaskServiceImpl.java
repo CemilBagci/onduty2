@@ -34,9 +34,9 @@ public class TaskServiceImpl implements TaskService {
     }
 
 	@Override
-	public Task get(Long taskId) {
+	public Task get(Long id) {
 		// TODO Auto-generated method stub
-		return taskRepository.findOne(taskId);
+		return taskRepository.findOne(id);
 	}
     
 
