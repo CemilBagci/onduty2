@@ -246,8 +246,8 @@ section
 {
 	display: block;
 	position: relative;
-	line-height: 15px;
-	font-size: 14px;
+	line-height: 16px;
+	font-size: 15px;
 	font-weight: 900;
 	color: #FFFFFF;
 	padding-left: 39px;
@@ -321,7 +321,7 @@ section
 .top_bar_content
 {
 	width: 100%;
-	height: 48px;
+	height: 70px;
 	padding-left: 214px;
 }
 .top_bar_item
@@ -464,7 +464,7 @@ section
 }
 .logo_text
 {
-	font-size: 30px;
+	font-size: 40px;
 	font-weight: 500;
 	color: #283290;
 	line-height: 0.75;
@@ -488,7 +488,7 @@ section
 }
 .logo_sub
 {
-	font-size: 14px;
+	font-size: 17px;
 	font-weight: 400;
 	color: #4947b0;
 	padding-left: 3px;
@@ -709,13 +709,13 @@ section
 {
 	font-size: 16px;
 	font-weight: 500;
-	color: #747474;
+	color: #4744f0;
 	line-height: 1.75;
 }
 .home_button
 {
-	margin-top: 34px;
-	margin-left: 3px;
+	margin-top: 26px;
+	margin-left: 0px;
 }
 
 /*********************************
@@ -1280,7 +1280,7 @@ section
 {
 	font-size: 14px;
 	font-weight: 500;
-	color: #97979c;
+	color: #efad49;
 }
 .footer_social ul
 {
