@@ -14,14 +14,18 @@ public class Task {
     private long id;
     @Column
     private String name;
-    @Column
 
+    @Column
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
 
     @JoinColumn(name = "personal_id")
     @ManyToOne(cascade = CascadeType.DETACH)
-    private Personal assignerpersonal;
+    private Personal assignerPersonal;
+
+    @JoinColumn(name = "personal_id")
+    @ManyToMany(cascade = CascadeType.DETACH)
+    private List<Personal> assigneePersonals;
 
     @Column
     @Enumerated(EnumType.ORDINAL)
@@ -31,19 +35,19 @@ public class Task {
     @ManyToOne(cascade = CascadeType.DETACH)
     private Project project;
 
-    
+
     @Column
     private Date taskstartdate;
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, Personal assignerpersonal, TaskPriority taskpriority, Project project,Date taskstartdate, Date taskenddate) {
+    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Project project, Date taskstartdate, Date taskenddate) {
         this.name = name;
         this.taskstatetype = taskstatetype;
-        this.assignerpersonal = assignerpersonal;
+        this.assignerPersonal = assignerPersonal;
+        this.assigneePersonals = assigneePersonals;
         this.taskpriority = taskpriority;
         this.project = project;
-  
         this.taskstartdate = taskstartdate;
         this.taskenddate = taskenddate;
     }
@@ -75,12 +79,20 @@ public class Task {
         this.taskstatetype = taskstatetype;
     }
 
-    public Personal getAssignerpersonal() {
-        return assignerpersonal;
+    public Personal getAssignerPersonal() {
+        return assignerPersonal;
     }
 
-    public void setAssignerpersonal(Personal assignerpersonal) {
-        this.assignerpersonal = assignerpersonal;
+    public void setAssignerPersonal(Personal assignerPersonal) {
+        this.assignerPersonal = assignerPersonal;
+    }
+
+    public List<Personal> getAssigneePersonals() {
+        return assigneePersonals;
+    }
+
+    public void setAssigneePersonals(List<Personal> assigneePersonals) {
+        this.assigneePersonals = assigneePersonals;
     }
 
     public TaskPriority getTaskpriority() {

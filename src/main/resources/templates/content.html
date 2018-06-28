@@ -1,4 +1,4 @@
-<div th:fragment="content">
+<div th:fragment="content" style="top: 250px;padding-bottom: 250px;min-height:700px;position: inherit;">
 
     <!-- Home -->
 
@@ -7,19 +7,9 @@
 
     <div class="boxes">
         <div class="container" >
-            <div th:include="${contentForm}"></div>
-            <div class="row">
-                <div class="col-lg-4 box_col">
-                    <div class="box working_hours">
-                        <div class="box_icon d-flex flex-column align-items-start justify-content-center"><div style="width:29px; height:29px;"><img src="/images/calendar-icon.png" alt=""/></div></div>
-                        <div class="button home_button">
-                            <a href="#">My Job Calendar</a>
-                             <div class="box_icon d-flex flex-column align-items-start justify-content-center"><div style="width:29px; height:29px;"><img src="/images/calendar-icon.png" alt=""/></div></div>
-                        </div>
+            <div th:include="${contentForm}" ></div>
 
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+
 </div>
