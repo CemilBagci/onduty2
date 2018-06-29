@@ -3,6 +3,8 @@ package com.project.yasar.onduty.onduty.service;
 import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.repository.GroupRepository;
 import com.project.yasar.onduty.onduty.repository.PersonalRepository;
+import com.project.yasar.onduty.onduty.repository.ProjectRepository;
+
 import javafx.scene.canvas.GraphicsContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,10 @@ public class DummyDataServiceImpl implements DummyDataService {
     private TaskService taskService;
     
     @Autowired
-    private GroupRepository groupRepository;
+    private ProjectService projectService;
+    
+    @Autowired
+    private ProjectRepository projectRepository;
     
     @Autowired
     private PersonalRepository personalRepository;
@@ -48,27 +53,46 @@ public class DummyDataServiceImpl implements DummyDataService {
             user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
         }
+        
+    
 
-        Department department =new Department("officeeee");
+        Department department =new Department("office");
         departmentService.createDepartment(department);
         Personal personal = personalService.findPersonalByUser(user);
         List<Department> departments = new ArrayList<>();
+        List<Project> projects = new ArrayList<>();
         departments.add(department);
+   //     projects.add(project);
         if(personal ==null) {
-            personal = new Personal(user, null, new ArrayList<>(), departments);
+            personal = new Personal(user,departments, projects); //doğru mu?
             personal = personalService.createPersonal(personal);
-        }
+            personalRepository.save(personal);
+      /* 
+         }
         if (personal.getGroups().size()<10) {
             Group group =new Group("group"+new Random().nextInt(50));
             groupRepository.save(group);
             personal.getGroups().add(group);
             personalRepository.save(personal);
+        } 
+        */
         }
+     
+        Project project = new Project("project1", null, null ,ProjectState.COMPLETED, StateType.ACTIVE, new ArrayList<>(), new ArrayList<>());
+        project = projectService.createProject(project);
+        personal.getProjects().add(project);
+        personalRepository.save(personal);
+        
+        
 
-         Task task = new Task("a", TaskStateType.ACTIVE, personal,new ArrayList<>(), TaskPriority.high, null, null, null);
+         Task task = new Task("a", TaskStateType.ACTIVE, null, new ArrayList<>(), TaskPriority.high, null, null, project);
          task = taskService.createTask(task);
-         personal.getTasks().add(task);
-         personalRepository.save(personal);
+         project.getTasks().add(task);
+         projectRepository.save(project);
 
-    }
+    	}
+    
 }
+	
+
+

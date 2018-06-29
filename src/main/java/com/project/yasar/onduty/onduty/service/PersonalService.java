@@ -12,10 +12,10 @@ import java.util.List;
 
 @Service
 public interface PersonalService {
-	Personal createPersonal(Personal personal);
-	Personal updatePersonal(Personal personal);
-	Personal findPersonalByUser(User user);
-	Personal findPersonalByGroups(List<Group> groups);
-	Personal getCurrentPersonal();
+	Personal createPersonal(Personal personal); //+
+	Personal updatePersonal(Personal personal); //+
+	Personal findPersonalByUser(User user);  //+ kullan diğerlerinde?
+	// -  Personal findPersonalByGroups(List<Group> groups); // bu silinecek
+	Personal getCurrentPersonal(); // +
 
 }

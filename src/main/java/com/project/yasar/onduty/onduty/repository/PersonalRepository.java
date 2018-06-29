@@ -15,9 +15,9 @@ import java.util.List;
 
 public interface PersonalRepository extends CrudRepository<Personal,Long> {
 	
-	 Personal findPersonalByUser(User user);
-	 Personal findPersonalByGroups(List<Group> groups);
-	 Personal findPersonalByDepartments(Department department);
+	 Personal findPersonalByUser(User user);  //+
+	 // - Personal findPersonalByGroups(List<Group> groups);   bu kullanılmıcak grup yok *melisa
+	 Personal findPersonalByDepartments(Department department); //+
 
 
 

@@ -9,40 +9,19 @@ public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
     @JoinColumn
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 
     @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Task> tasks = new ArrayList<Task>();
-
-
-    @JoinColumn
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Group> groups = new ArrayList<Group>();
-
-    @JoinColumn
-    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Department> departments = new ArrayList<Department>();
-
-
-    public List<Task> getTasks() {
-        return tasks;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
-    }
-
+    
+    @JoinColumn(name="project_id")
+    @ManyToMany(cascade = CascadeType.DETACH)
+    private List<Project> projects = new ArrayList<Project>();
+    
     public List<Department> getDepartments() {
         return departments;
     }
@@ -50,12 +29,19 @@ public class Personal {
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
+    
+    public List<Project> getProjects() {
+		return projects;
+	}
 
-    public Personal(User user, List<Task> tasks, List<Group> groups, List<Department> departments) {
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+ 
+    public Personal(User user, List<Department> departments, List<Project> projects ) {
         this.user = user;
-        this.tasks = tasks;
-        this.groups = groups;
         this.departments = departments;
+        this.projects = projects;
     }
 
     public Personal() {
@@ -65,7 +51,8 @@ public class Personal {
         return id;
     }
 
-    public void setId(long id) {
+   
+	public void setId(long id) {
         this.id = id;
     }
 

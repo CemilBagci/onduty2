@@ -20,8 +20,10 @@ import java.util.List;
 @Service("personalService")
 @Transactional(readOnly = true)
 public class PersonalServiceImpl implements PersonalService {
+	
     @Autowired
     PersonalRepository personalRepository;
+    
     @Autowired
     UserRepository userRepository;
 
@@ -42,12 +44,12 @@ public class PersonalServiceImpl implements PersonalService {
     public Personal findPersonalByUser(User user) {
         return personalRepository.findPersonalByUser(user);
     }
-
+ /*  
     @Override
     public Personal findPersonalByGroups(List<Group> groups) {
         return personalRepository.findPersonalByGroups(groups);
     }
-
+*/
     @Override
     public Personal getCurrentPersonal() {
         if (ContextUtil.getUsername() != null)

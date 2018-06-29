@@ -42,13 +42,9 @@ public class MainController {
         return "task";
     }
 
-    @RequestMapping("/group")
-    public String group() {
-        return "group";
+    @RequestMapping("/project")
+    public String project() {
+        return "project";
     }
 
-    @RequestMapping("/message")
-    public String message() {
-        return "message";
-    }
 }

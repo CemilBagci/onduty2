@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner">
+                <div class="form-control" th:each="project:${projects}"> <span th:text="${project.name}"></span></div>
+            </div>
+        </div>
+    </div>
+</div>

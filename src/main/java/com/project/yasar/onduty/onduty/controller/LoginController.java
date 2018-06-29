@@ -1,7 +1,6 @@
 package com.project.yasar.onduty.onduty.controller;
 
 import com.project.yasar.onduty.onduty.domain.User;
-import com.project.yasar.onduty.onduty.domain.User;
 import com.project.yasar.onduty.onduty.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

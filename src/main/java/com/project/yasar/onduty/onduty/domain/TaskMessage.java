@@ -14,9 +14,12 @@ public class TaskMessage {
     private String content;
     @Column
     private Date enrtyDate;
+    
     @JoinColumn(name = "personal_id")
     @OneToMany(cascade = CascadeType.DETACH)
     private List<Personal> personals = new ArrayList<Personal>();
+    
+    
     @JoinColumn(name = "task_id")
     @ManyToOne(cascade = CascadeType.DETACH)
     private Task task;

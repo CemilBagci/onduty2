@@ -24,35 +24,37 @@ public class Task {
     private Personal assignerPersonal;
 
     @JoinColumn(name = "personal_id")
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @OneToMany(cascade = CascadeType.DETACH)
     private List<Personal> assigneePersonals;
 
     @Column
     @Enumerated(EnumType.ORDINAL)
     private TaskPriority taskpriority;
-
+    
     @JoinColumn(name = "project_id")
     @ManyToOne(cascade = CascadeType.DETACH)
     private Project project;
 
-
+    
     @Column
     private Date taskstartdate;
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Project project, Date taskstartdate, Date taskenddate) {
+    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority,  Date taskstartdate, Date taskenddate, Project project) {
         this.name = name;
         this.taskstatetype = taskstatetype;
         this.assignerPersonal = assignerPersonal;
         this.assigneePersonals = assigneePersonals;
         this.taskpriority = taskpriority;
-        this.project = project;
         this.taskstartdate = taskstartdate;
         this.taskenddate = taskenddate;
+        this.project = project;
     }
 
-    public Task() {
+  
+
+	public Task() {
     }
 
     public long getId() {
@@ -103,14 +105,6 @@ public class Task {
         this.taskpriority = taskpriority;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-
     public Date getTaskstartdate() {
         return taskstartdate;
     }
@@ -126,5 +120,13 @@ public class Task {
     public void setTaskenddate(Date taskenddate) {
         this.taskenddate = taskenddate;
     }
+    
+    public Project getProject() {
+  		return project;
+  	}
+
+  	public void setProject(Project project) {
+  		this.project = project;
+  	}
 }
 

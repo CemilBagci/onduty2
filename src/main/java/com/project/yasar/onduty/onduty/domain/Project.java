@@ -11,30 +11,39 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    
     @Column
     private String name;
+    
     @Column
     private Date starttime;
+    
     @Column
     private Date enddate;
+    
     @Enumerated(EnumType.ORDINAL)
     private ProjectState projectstate;
+    
     @Enumerated(EnumType.ORDINAL)
     private StateType statetype;
-    @JoinColumn(name = "task_id")
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<Task> tasks = new ArrayList<>();
+    
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks = new ArrayList<Task>();
 
-    public Project(String name, Date starttime, Date enddate, ProjectState projectstate, StateType statetype) {
+    
+
+    public Project(String name, Date starttime, Date enddate, ProjectState projectstate, StateType statetype, List<Personal> personals, List<Task> tasks) {
         super();
         this.name = name;
         this.starttime = starttime;
         this.enddate = enddate;
         this.projectstate = projectstate;
         this.statetype = statetype;
+        this.tasks = tasks;
     }
 
-    public Project() {
+
+	public Project() {
 
     }
 
@@ -86,11 +95,13 @@ public class Project {
         this.statetype = statetype;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
+	public List<Task> getTasks() {
+		return tasks;
+	}
 
-    public void setTasks(List<Task> tasks) {
-        this.tasks = tasks;
-    }
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+
 }
