@@ -18,4 +18,5 @@ public interface PersonalService {
 	// -  Personal findPersonalByGroups(List<Group> groups); // bu silinecek
 	Personal getCurrentPersonal(); // +
 
+    List<Personal> findAll();
 }

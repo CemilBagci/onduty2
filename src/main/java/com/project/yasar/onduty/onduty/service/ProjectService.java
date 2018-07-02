@@ -13,6 +13,7 @@ public interface ProjectService {
     Project createProject(Project projects);
     Project findProjectByProjectNameEquals(String name);
 //	List<Task> findTaskByProject(String project);
+    List<Project> findAll();
 }
 
 

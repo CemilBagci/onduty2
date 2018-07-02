@@ -19,22 +19,47 @@
 -->
 
 
-
 <!-- Modal -->
-<div  th:fragment="taskForm" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div th:fragment="taskForm" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            <form th:object="${task}" th:action="@{/tasks}" method="POST">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div>
+                        <span>TaskName:</span><input class="form-control" th:field="*{name}"/>
+                        <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}"/>
+                        <span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/>
+                        <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
+                                id="assigneePersonals">
+                            <option th:each="personal:${personals}"
+                                    th:text="${personal}"
+                                    th:value="${personal.id}"></option>
+                        </select>
+                        <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"/>
+                        <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}"/>
+                        <span>Project</span><select class="selectpicker" multiple="multiple" data-container="content"
+                                id="project">
+                            <option th:each="project:${projects}"
+                                    th:text="${project}"
+                                    th:value="${project.id}"></option>
+                        </select>
+                        <span>AssignerPersonal</span><input class="form-control" th:field="*{assignerPersonal}"/>
+
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -5,6 +5,8 @@ import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.repository.ProjectRepository;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,12 @@ public class ProjectServiceImpl implements 	ProjectService {
     @Override
     public Project findProjectByProjectNameEquals(String name) {
         return projectRepository.findProjectByNameEquals(name);
+    }
+
+    @Override
+    public List<Project> findAll() {
+        return StreamSupport.stream(projectRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
 //	@Override

@@ -14,7 +14,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 
 @Service("personalService")
@@ -55,6 +58,12 @@ public class PersonalServiceImpl implements PersonalService {
         if (ContextUtil.getUsername() != null)
             return findPersonalByUser(userRepository.findUserByUsernameEquals(ContextUtil.getUsername()));
         return null;
+    }
+
+    @Override
+    public List<Personal> findAll() {
+        return StreamSupport.stream(personalRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
 }

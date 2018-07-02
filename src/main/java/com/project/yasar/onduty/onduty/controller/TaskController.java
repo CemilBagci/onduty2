@@ -8,12 +8,10 @@ import com.project.yasar.onduty.onduty.service.ProjectService;
 import com.project.yasar.onduty.onduty.service.TaskService;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,8 +29,11 @@ public class TaskController {
     
     @Autowired
     PersonalService personalService;
-    
-   
+
+    @ModelAttribute("task")
+    public Task newTask() {
+        return new Task();
+    }
     @RequestMapping(value = { "/tasks"}, method = RequestMethod.GET)
     public ModelAndView showTasks() {
         ModelAndView mav = new ModelAndView("main");
@@ -40,15 +41,25 @@ public class TaskController {
         List<Task> tasks = personalService.getCurrentPersonal()
         		.getProjects()
         		.stream()
-        		.map(p -> p.getTasks())
-        		.flatMap(t -> t.stream())
+        		.map(Project::getTasks)
+        		.flatMap(Collection::stream)
         		.collect(Collectors.toList());
         
         mav.addObject("tasks", tasks);
+        mav.addObject("personals",personalService.findAll());
+        mav.addObject("projects",projectService.findAll());
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }
 
+
+    @RequestMapping(value = "/tasks", method = RequestMethod.POST)
+    public ModelAndView updateTask(@ModelAttribute("task") Task task) {
+        ModelAndView mav = new ModelAndView("main");
+        mav.addObject("task", taskService.createTask(task));
+        mav.addObject("contentForm", "layouts/tasks");
+        return mav;
+    }
 }
 
 
