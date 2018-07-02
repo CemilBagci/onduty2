@@ -1,6 +1,7 @@
 package com.project.yasar.onduty.onduty;
 
 import com.project.yasar.onduty.onduty.domain.Personal;
+import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,7 +14,11 @@ public class GlobalControllerAdvice {
     PersonalService personalService;
 
     @ModelAttribute("currentPersonal")
-    public Personal getCurrentPersonel() {
+    public Personal getCurrentPersonal() {
         return personalService.getCurrentPersonal();
+    }
+    @ModelAttribute("newTask")
+    public Task newTask() {
+        return new Task();
     }
 }

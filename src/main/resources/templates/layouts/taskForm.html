@@ -41,6 +41,7 @@
                                     th:text="${personal}"
                                     th:value="${personal.id}"></option>
                         </select>
+                        <p></p>
                         <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"/>
                         <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}"/>
                         <span>Project</span><select class="selectpicker" multiple="multiple" data-container="content"
@@ -49,6 +50,7 @@
                                     th:text="${project}"
                                     th:value="${project.id}"></option>
                         </select>
+                        <p></p>
                         <span>AssignerPersonal</span><input class="form-control" th:field="*{assignerPersonal}"/>
 
                     </div>

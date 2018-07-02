@@ -54,9 +54,9 @@ public class TaskController {
 
 
     @RequestMapping(value = "/tasks", method = RequestMethod.POST)
-    public ModelAndView updateTask(@ModelAttribute("task") Task task) {
+    public ModelAndView updateTask(@ModelAttribute("task") Task tasks) {
         ModelAndView mav = new ModelAndView("main");
-        mav.addObject("task", taskService.createTask(task));
+        mav.addObject("tasks", taskService.createTask(tasks));
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }
