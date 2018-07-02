@@ -17,7 +17,7 @@ public interface PersonalRepository extends CrudRepository<Personal,Long> {
 	
 	 Personal findPersonalByUser(User user);  //+
 	 // - Personal findPersonalByGroups(List<Group> groups);   bu kullanılmıcak grup yok *melisa
-	 Personal findPersonalByDepartments(Department department); //+
+	 //Personal findPersonalByDepartments(Department department); //+
 
 
 

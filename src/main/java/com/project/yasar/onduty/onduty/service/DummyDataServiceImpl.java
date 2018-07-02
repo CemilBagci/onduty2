@@ -45,12 +45,12 @@ public class DummyDataServiceImpl implements DummyDataService {
     public void createDummyData() {
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
         if (roleAdmin == null) {
-            roleAdmin = new Role("ROLE_ADMIN", State.ACTIVE, Collections.singletonList(null));
+            roleAdmin = new Role("ROLE_ADMIN", State.ACTIVE, new ArrayList<>(Collections.singletonList(null)));
             roleAdmin = roleService.createRole(roleAdmin);
         }
         User user = userService.findUserByUsernameEquals("1");
         if (user == null) {
-            user = new User("1", "1", "1", Collections.singletonList(roleAdmin), "1", "1", State.ACTIVE);
+            user = new User("1", "1", "1", new ArrayList<>(Collections.singletonList(roleAdmin)), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
         }
         
@@ -66,7 +66,7 @@ public class DummyDataServiceImpl implements DummyDataService {
         if(personal ==null) {
             personal = new Personal(user,departments, projects); //doğru mu?
             personal = personalService.createPersonal(personal);
-            personalRepository.save(personal);
+            //personalRepository.save(personal);
       /* 
          }
         if (personal.getGroups().size()<10) {
@@ -81,7 +81,8 @@ public class DummyDataServiceImpl implements DummyDataService {
         Project project = new Project("project1", null, null ,ProjectState.COMPLETED, StateType.ACTIVE, new ArrayList<>(), new ArrayList<>());
         project = projectService.createProject(project);
         personal.getProjects().add(project);
-        personalRepository.save(personal);
+        personalService.updatePersonal(personal);
+        //personalRepository.save(personal);
         
         
 
@@ -89,7 +90,6 @@ public class DummyDataServiceImpl implements DummyDataService {
          task = taskService.createTask(task);
          project.getTasks().add(task);
          projectRepository.save(project);
-
     	}
     
 }

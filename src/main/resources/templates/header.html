@@ -1,71 +1,29 @@
-<div th:fragment="header">
-   
-    <header class="header trans_200">
-
-        <!-- Top Bar -->
-        <div class="top_bar">
-            <div class="container">
-                <div class="row">  
-                    <div class="col">  
-                        <div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
-
-                            <div class="top_bar_item" style="right: 0; position: absolute;">
-                                <p>
-                                    <font face="tahoma" size="2" color="Orange">
-
-                                <span th:text="${'Welcome ' + currentPersonal.user.name + ' ' + currentPersonal.user.surname}"></span></font></p>
-                                <a th:href="@{/logout}">Logout</a>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+<div th:fragment="header" class="div2">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" th:href="'/'">OnDuty</a>
             </div>
-        </div>
-        <!-- Header Content -->
-        <div class="header_container">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <nav class="main_nav ml-auto">
-                                <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a th:href="'/personal'">Profile</a></li>
-                                    <li><a th:href="'/projects'">Projects</a></li>
-                                    <li><a th:href="'/tasks'">Tasks</a></li>
-                                    <li><a th:href="'/contact'">Contact</a></li>
-                                </ul>
-                            </nav>
-                            <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Logo -->
-        <div class="logo_container_outer">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="logo_container">
-                            <a href="/">
-                                <div class="logo_content d-flex flex-column align-items-start justify-content-center">
-                                    <div class="logo_line"></div>
-                                    <div class="logo d-flex flex-row align-items-center justify-content-center">
-                                        <div class="logo_text">On<span>Duty</span></div>
-                                    </div>
-                                    <div class="logo_sub">Manage Job</div>
-                                    
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
 
+                    <li role="presentation"><a th:href="'/personal'">Profile</a></li>
+                    <li role="presentation"><a th:href="'/projects'">Projects</a></li>
+                    <li role="presentation"><a th:href="'/tasks'">Tasks</a></li>
+                    <li role="presentation"><a th:href="'/contact'">Contact</a></li>
 
-    </header>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 </div>

@@ -53,10 +53,18 @@ body
 div
 {
 	display: block;
-	position: relative;
+	position: initial;
 	-webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+.div2
+{
+	display: block;
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 ul
 {
@@ -867,7 +875,7 @@ section
 	width: 100%;
 	background: transparent;
 	padding-top: 75px;
-	padding-bottom: 65px;	
+	padding-bottom: 65px;
 }
 .departments_background
 {

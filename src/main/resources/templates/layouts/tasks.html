@@ -1,7 +1,14 @@
-<div class="container">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="">
     <div class="row">
         <div style="width:100%">
-            <input type="button" class="btn btn-success float-right" value="Create Task"/>
+
+
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
+                CreateTask
+            </button>
         </div>
     </div>
     <div class="row">
@@ -39,6 +46,6 @@
         </div>
     </div>
 </div>
-
-
+<div th:replace="layouts/taskForm :: taskForm"></div>
+</html>
 
