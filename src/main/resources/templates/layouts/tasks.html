@@ -18,7 +18,7 @@
                     <thead>
                     <tr>
                         <th>Task Name</th>
-                        <th>Task State</th>
+                        <th>Task Priority</th>
                         <th>Assigner</th>
                         <th>Project</th>
                         <th>Start Date</th>
@@ -29,7 +29,7 @@
                     <tbody>
                     <tr th:each="task2:${tasks}">
                         <td   th:text="${task2.name}"/>
-                        <td   th:text="${task2.taskstatetype}"/>
+                        <td   th:text="${task2.taskpriority}"/>
                         <td   th:text="${task2.assignerPersonal}"/>
                         <td   th:text="${task2.project?.name}"/>
                         <td   th:text="${task2.taskstartdate}"/>
