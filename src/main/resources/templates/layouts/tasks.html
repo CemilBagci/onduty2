@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="home_content_inner col-sm-12 " >
+            <div class="home_content_inner col-sm-12 ">
                 <table class="table" style="background-color:white;">
                     <thead>
                     <tr>
@@ -28,14 +28,16 @@
                     </thead>
                     <tbody>
                     <tr th:each="task2:${tasks}">
-                        <td   th:text="${task2.name}"/>
-                        <td   th:text="${task2.taskpriority}"/>
-                        <td   th:text="${task2.assignerPersonal}"/>
-                        <td   th:text="${task2.project?.name}"/>
-                        <td   th:text="${task2.taskstartdate}"/>
-                        <td   th:text="${task2.taskenddate}"/>
+                        <td th:text="${task2.name}"/>
+                        <td th:text="${task2.taskpriority}"/>
+                        <td th:text="${task2.assignerPersonal}"/>
+                        <td th:text="${task2.project?.name}"/>
+                        <td th:text="${task2.taskstartdate}"/>
+                        <td th:text="${task2.taskenddate}"/>
                         <td>
-                            <span class="glyphicon glyphicon-search"></span>
+                            <a href="http://google.com">
+                                <span class="glyphicon glyphicon-search"></span>
+                            </a>
                         </td>
                     </tr>
                     </tbody>

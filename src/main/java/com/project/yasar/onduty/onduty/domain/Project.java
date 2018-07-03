@@ -1,5 +1,7 @@
 package com.project.yasar.onduty.onduty.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,10 +16,14 @@ public class Project {
     
     @Column
     private String name;
-    
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy") // This is for bind Date with @ModelAttribute
+    @Temporal(TemporalType.DATE)
     @Column
     private Date starttime;
-    
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy") // This is for bind Date with @ModelAttribute
+    @Temporal(TemporalType.DATE)
     @Column
     private Date enddate;
     

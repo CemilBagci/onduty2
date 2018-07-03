@@ -2,8 +2,49 @@
     <div class="row">
         <div class="col">
             <div class="home_content_inner">
-                <div class="form-control" th:each="project:${projects}"> <span th:text="${project.name}"></span></div>
+                <div style="width:100%">
+
+
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
+                        CreateProject
+                    </button>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="home_content_inner col-sm-12 " >
+                            <table class="table" style="background-color:white;">
+                                <thead>
+                                <tr>
+                                    <th>Project Name</th>
+                                    <th>Project Start Time</th>
+                                    <th>Project End Date</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="project2:${projects}">
+                                    <td   th:text="${project2.name}"/>
+                                    <td   th:text="${project2.starttime}"/>
+                                    <td   th:text="${project2.enddate}"/>
+
+                                    <td>
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
     </div>
 </div>
+<div th:replace="layouts/projectForm :: projectForm"></div>

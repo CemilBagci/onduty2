@@ -16,7 +16,8 @@ public class Task {
     private long id;
     @Column
     private String name;
-
+    @Column
+    private String description;
     @Column
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
@@ -133,6 +134,14 @@ public class Task {
 
     public void setProject(Project project) {
         this.project = project;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

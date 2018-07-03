@@ -77,15 +77,7 @@ public class DummyDataServiceImpl implements DummyDataService {
         } 
         */
         }
-     
-        Project project = new Project("project1", null, null ,ProjectState.COMPLETED, StateType.ACTIVE, new ArrayList<>(), new ArrayList<>());
-        project = projectService.createProject(project);
-        personal.getProjects().add(project);
-        personalService.updatePersonal(personal);
-        //personalRepository.save(personal);
-        
 
-         projectRepository.save(project);
     	}
     
 }

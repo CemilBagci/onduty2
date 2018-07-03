@@ -32,6 +32,15 @@ public class TaskController {
     @Autowired
     PersonalService personalService;
 
+    @RequestMapping(value = {"/task/{id}"}, method = RequestMethod.GET)
+    public ModelAndView showTask(@RequestParam Long id) {
+        Task task = taskService.get(id);
+        ModelAndView mav = new ModelAndView("main");
+        mav.addObject("task",task);
+        mav.addObject("contentForm", "layouts/tasks");
+        return mav;
+    }
+
     @RequestMapping(value = {"/tasks"}, method = RequestMethod.GET)
     public ModelAndView showTasks() {
         ModelAndView mav = new ModelAndView("main");
