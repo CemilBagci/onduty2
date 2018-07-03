@@ -27,13 +27,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr th:each="task:${tasks}">
-                        <td   th:text="${task.name}"/>
-                        <td   th:text="${task.taskstatetype}"/>
-                        <td   th:text="${task.assignerPersonal}"/>
-                        <td   th:text="${task.project.name}"/>
-                        <td   th:text="${task.taskstartdate}"/>
-                        <td   th:text="${task.taskenddate}"/>
+                    <tr th:each="task2:${tasks}">
+                        <td   th:text="${task2.name}"/>
+                        <td   th:text="${task2.taskstatetype}"/>
+                        <td   th:text="${task2.assignerPersonal}"/>
+                        <td   th:text="${task2.project?.name}"/>
+                        <td   th:text="${task2.taskstartdate}"/>
+                        <td   th:text="${task2.taskenddate}"/>
                         <td>
                             <span class="glyphicon glyphicon-search"></span>
                         </td>

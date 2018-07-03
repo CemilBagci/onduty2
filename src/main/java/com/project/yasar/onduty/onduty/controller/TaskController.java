@@ -8,6 +8,7 @@ import com.project.yasar.onduty.onduty.service.ProjectService;
 import com.project.yasar.onduty.onduty.service.TaskService;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class TaskController {
@@ -26,38 +28,35 @@ public class TaskController {
 
     @Autowired
     TaskService taskService;
-    
+
     @Autowired
     PersonalService personalService;
 
-    @ModelAttribute("task")
-    public Task newTask() {
-        return new Task();
-    }
-    @RequestMapping(value = { "/tasks"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/tasks"}, method = RequestMethod.GET)
     public ModelAndView showTasks() {
         ModelAndView mav = new ModelAndView("main");
-        
+
         List<Task> tasks = personalService.getCurrentPersonal()
-        		.getProjects()
-        		.stream()
-        		.map(Project::getTasks)
-        		.flatMap(Collection::stream)
-        		.collect(Collectors.toList());
-        
+                .getProjects()
+                .stream()
+                .map(Project::getTasks)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+
         mav.addObject("tasks", tasks);
-        mav.addObject("personals",personalService.findAll());
-        mav.addObject("projects",projectService.findAll());
+        mav.addObject("task",new Task());
+        mav.addObject("personals", personalService.findAll());
+        mav.addObject("projects", projectService.findAll());
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }
 
 
     @RequestMapping(value = "/tasks", method = RequestMethod.POST)
-    public ModelAndView updateTask(@ModelAttribute("task") Task tasks) {
-        ModelAndView mav = new ModelAndView("main");
-        mav.addObject("tasks", taskService.createTask(tasks));
-        mav.addObject("contentForm", "layouts/tasks");
+    public ModelAndView createTask( Task task, BindingResult bindingResult) {
+        ModelAndView mav = new ModelAndView(new RedirectView("/tasks", true));
+        task.setAssignerPersonal(personalService.getCurrentPersonal());
+        task = taskService.createTask(task);
         return mav;
     }
 }

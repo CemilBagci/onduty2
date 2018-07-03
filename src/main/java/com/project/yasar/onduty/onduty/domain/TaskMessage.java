@@ -15,23 +15,20 @@ public class TaskMessage {
     @Column
     private Date enrtyDate;
     
-    @JoinColumn(name = "personal_id")
-    @OneToMany(cascade = CascadeType.DETACH)
-    private List<Personal> personals = new ArrayList<Personal>();
+    @JoinColumn
+    @ManyToOne(cascade = CascadeType.DETACH)
+    private Personal personal;
     
     
-    @JoinColumn(name = "task_id")
+    @JoinColumn
     @ManyToOne(cascade = CascadeType.DETACH)
     private Task task;
 
-    public TaskMessage(String content, Date enrtyDate, List<Personal> personals, Task task) {
+    public TaskMessage(String content, Date enrtyDate, Personal personal, Task task) {
         this.content = content;
         this.enrtyDate = enrtyDate;
-        this.personals = personals;
+        this.personal = personal;
         this.task = task;
-    }
-
-    public TaskMessage() {
     }
 
     public long getId() {
@@ -58,12 +55,12 @@ public class TaskMessage {
         this.enrtyDate = enrtyDate;
     }
 
-    public List<Personal> getPersonals() {
-        return personals;
+    public Personal getPersonal() {
+        return personal;
     }
 
-    public void setPersonals(List<Personal> personals) {
-        this.personals = personals;
+    public void setPersonal(Personal personal) {
+        this.personal = personal;
     }
 
     public Task getTask() {

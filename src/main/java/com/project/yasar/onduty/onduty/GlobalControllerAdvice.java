@@ -17,8 +17,4 @@ public class GlobalControllerAdvice {
     public Personal getCurrentPersonal() {
         return personalService.getCurrentPersonal();
     }
-    @ModelAttribute("newTask")
-    public Task newTask() {
-        return new Task();
-    }
 }

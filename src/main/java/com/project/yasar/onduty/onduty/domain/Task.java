@@ -1,5 +1,7 @@
 package com.project.yasar.onduty.onduty.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -19,29 +21,34 @@ public class Task {
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
 
-    @JoinColumn(name = "personal_id")
+    @JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
     private Personal assignerPersonal;
 
-    @JoinColumn(name = "personal_id")
+    @JoinColumn()
     @OneToMany(cascade = CascadeType.DETACH)
     private List<Personal> assigneePersonals;
 
     @Column
     @Enumerated(EnumType.ORDINAL)
     private TaskPriority taskpriority;
-    
-    @JoinColumn(name = "project_id")
+
+    @JoinColumn( nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
     private Project project;
 
-    
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy") // This is for bind Date with @ModelAttribute
+    @Temporal(TemporalType.DATE)
     @Column
     private Date taskstartdate;
+
+    @DateTimeFormat(pattern = "dd.MM.yyyy") // This is for bind Date with @ModelAttribute
+    @Temporal(TemporalType.DATE)
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority,  Date taskstartdate, Date taskenddate, Project project) {
+    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Date taskstartdate, Date taskenddate, Project project) {
         this.name = name;
         this.taskstatetype = taskstatetype;
         this.assignerPersonal = assignerPersonal;
@@ -52,9 +59,8 @@ public class Task {
         this.project = project;
     }
 
-  
 
-	public Task() {
+    public Task() {
     }
 
     public long getId() {
@@ -120,13 +126,13 @@ public class Task {
     public void setTaskenddate(Date taskenddate) {
         this.taskenddate = taskenddate;
     }
-    
-    public Project getProject() {
-  		return project;
-  	}
 
-  	public void setProject(Project project) {
-  		this.project = project;
-  	}
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }
 

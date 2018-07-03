@@ -36,7 +36,7 @@
                         <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}"/>
                         <span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/>
                         <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
-                                id="assigneePersonals">
+                                name="assigneePersonals">
                             <option th:each="personal:${personals}"
                                     th:text="${personal}"
                                     th:value="${personal.id}"></option>
@@ -44,15 +44,12 @@
                         <p></p>
                         <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"/>
                         <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}"/>
-                        <span>Project</span><select class="selectpicker" multiple="multiple" data-container="content"
-                                id="project">
+                        <span>Project</span><select class="selectpicker" data-container="content"
+                                name="project">
                             <option th:each="project:${projects}"
                                     th:text="${project}"
                                     th:value="${project.id}"></option>
                         </select>
-                        <p></p>
-                        <span>AssignerPersonal</span><input class="form-control" th:field="*{assignerPersonal}"/>
-
                     </div>
 
 
