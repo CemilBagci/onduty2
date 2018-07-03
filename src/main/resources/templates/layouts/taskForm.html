@@ -34,7 +34,15 @@
                     <div>
                         <span>TaskName:</span><input class="form-control" th:field="*{name}"/>
                         <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}"/>
-                        <span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/>
+                        <span>TaskPriority</span> <select class="selectpicker"  data-container="content"
+                                                               name="taskpriority">
+                        <option th:each="taskpriority:${T(com.project.yasar.onduty.onduty.domain.TaskPriority).values()}"
+                                th:text="${taskpriority.toString()}"
+                                th:value="${taskpriority.name()}"></option>
+                    </select>
+
+                        <!--<span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/> -->
+                        <p></p>
                         <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
                                 name="assigneePersonals">
                             <option th:each="personal:${personals}"

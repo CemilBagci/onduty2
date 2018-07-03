@@ -1,9 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
-import com.project.yasar.onduty.onduty.domain.Group;
-import com.project.yasar.onduty.onduty.domain.Personal;
-import com.project.yasar.onduty.onduty.domain.Project;
-import com.project.yasar.onduty.onduty.domain.Task;
+import com.project.yasar.onduty.onduty.domain.*;
 
 import java.util.List;
 
@@ -18,6 +15,7 @@ public interface TaskService {
 	
 	String  getAssignerpersonal(String assignerpersonal);
 	Task get(Long id);
+
 	
 	
 

@@ -47,6 +47,7 @@ public class TaskController {
         mav.addObject("task",new Task());
         mav.addObject("personals", personalService.findAll());
         mav.addObject("projects", projectService.findAll());
+
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }

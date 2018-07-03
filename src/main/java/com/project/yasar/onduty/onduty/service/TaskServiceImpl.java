@@ -1,17 +1,14 @@
 package com.project.yasar.onduty.onduty.service;
 
-import com.project.yasar.onduty.onduty.domain.Group;
-import com.project.yasar.onduty.onduty.domain.Personal;
-import com.project.yasar.onduty.onduty.domain.Project;
-import com.project.yasar.onduty.onduty.domain.Task;
+import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service("taskService")
 @Transactional(readOnly = true)
@@ -43,7 +40,8 @@ public class TaskServiceImpl implements TaskService {
 		// TODO Auto-generated method stub
 		return taskRepository.findOne(id);
 	}
-    
+
+
 
 
 }
