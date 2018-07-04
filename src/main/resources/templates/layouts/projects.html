@@ -19,6 +19,8 @@
                                     <th>Project Name</th>
                                     <th>Project Start Time</th>
                                     <th>Project End Date</th>
+                                    <th>Edit Project</th>
+                                    <th>Delete</th>
 
                                 </tr>
                                 </thead>
@@ -28,8 +30,16 @@
                                     <td   th:text="${project2.starttime}"/>
                                     <td   th:text="${project2.enddate}"/>
 
+
                                     <td>
-                                        <span class="glyphicon glyphicon-search"></span>
+                                        <div th:onclick="'javascript:updateItem('+${project2.id}+')'">
+                                            <span class="glyphicon glyphicon-share-alt"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div th:onclick="'javascript:removeItem('+${project2.id}+')'">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </div>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -48,3 +58,19 @@
     </div>
 </div>
 <div th:replace="layouts/projectForm :: projectForm"></div>
+
+
+<script th:inline="javascript">
+
+    this.updateItem = function (id) {
+        $.get('projects/' + id+'/updateForm', (data) => {
+            $(data).modal('show')
+        //setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+    })
+    }
+    this.removeItem = function (id) {
+        $.get('projects/' + id+'/delete', (data) => {
+            location.reload();
+    })
+    }
+    </script>

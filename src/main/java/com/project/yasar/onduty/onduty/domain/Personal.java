@@ -2,7 +2,9 @@ package com.project.yasar.onduty.onduty.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Personal {
@@ -19,8 +21,8 @@ public class Personal {
     private List<Department> departments = new ArrayList<Department>();
     
     @JoinColumn(name="project_id")
-    @ManyToMany(cascade = CascadeType.DETACH)
-    private List<Project> projects = new ArrayList<Project>();
+    @ManyToMany(cascade = CascadeType.REFRESH)
+    private Set<Project> projects = new HashSet<>();
     
     public List<Department> getDepartments() {
         return departments;
@@ -30,15 +32,15 @@ public class Personal {
         this.departments = departments;
     }
     
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
 		return projects;
 	}
 
-	public void setProjects(List<Project> projects) {
+	public void setProjects(Set<Project> projects) {
 		this.projects = projects;
 	}
  
-    public Personal(User user, List<Department> departments, List<Project> projects ) {
+    public Personal(User user, List<Department> departments, Set<Project> projects ) {
         this.user = user;
         this.departments = departments;
         this.projects = projects;

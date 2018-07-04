@@ -14,6 +14,8 @@ public interface ProjectService {
     Project findProjectByProjectNameEquals(String name);
 //	List<Task> findTaskByProject(String project);
     List<Project> findAll();
+    Project get(Long id);
+    Boolean delete(Long id);
 }
 
 

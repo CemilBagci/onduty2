@@ -60,7 +60,7 @@ public class DummyDataServiceImpl implements DummyDataService {
         departmentService.createDepartment(department);
         Personal personal = personalService.findPersonalByUser(user);
         List<Department> departments = new ArrayList<>();
-        List<Project> projects = new ArrayList<>();
+        Set<Project> projects = new HashSet<>();
         departments.add(department);
    //     projects.add(project);
         if(personal ==null) {

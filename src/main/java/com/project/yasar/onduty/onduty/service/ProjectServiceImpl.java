@@ -37,11 +37,26 @@ public class ProjectServiceImpl implements 	ProjectService {
                 .collect(Collectors.toList());
     }
 
-//	@Override
-//	public List<Task> findTaskByProject(String project) {
-//		return projectRepository.findTaskByProject(project);
-//	}
-//    
+    @Override
+    public Project get(Long id) {
+        return projectRepository.findOne(id);
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+    public Boolean delete(Long id) {
+        try {
+            Project project = projectRepository.findOne(id);
+            projectRepository.delete(project);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
     
 }
 

@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -30,7 +31,7 @@ public class ProjectController {
     ProjectService projectService;
     
     @RequestMapping(value ={ "/projects"}, method = RequestMethod.GET)
-    public ModelAndView showPersonal() {
+    public ModelAndView showProjects() {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("project",new Project());
         mav.addObject("projects", personalService.getCurrentPersonal().getProjects());
@@ -46,6 +47,27 @@ public class ProjectController {
         currentPersonal.getProjects().add(project);
         personalService.updatePersonal(currentPersonal);
         return mav;
+    }
+
+    @RequestMapping(value = "/projects/{id}/updateForm", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView updateProjectForm(@PathVariable("id") Long id) {
+        ModelAndView mav = new ModelAndView("layouts/projectForm");
+        Project project = projectService.get(id);
+        mav.addObject("project", project);
+        //mav.addObject("personals", personalService.findAll());
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/projects/{id}/delete", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean deleteProject(@PathVariable("id") Long id) {
+        Personal currentPersonal = personalService.getCurrentPersonal();
+        currentPersonal.getProjects().remove(projectService.get(id));
+        personalService.updatePersonal(currentPersonal);
+        return projectService.delete(id);
+
     }
 }
     
