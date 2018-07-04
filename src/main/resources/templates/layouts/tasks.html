@@ -9,6 +9,7 @@
             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
                 CreateTask
             </button>
+
         </div>
     </div>
     <div class="row">
@@ -23,7 +24,9 @@
                         <th>Project</th>
                         <th>Start Date</th>
                         <th>End Date</th>
-                        <th>Action</th>
+                        <th>Task Description</th>
+                        <th>Edit Task</th>
+                        <th>Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -34,10 +37,25 @@
                         <td th:text="${task2.project?.name}"/>
                         <td th:text="${task2.taskstartdate}"/>
                         <td th:text="${task2.taskenddate}"/>
+                        <!--   <td th:text="${task2.description}"/> -->
                         <td>
-                            <a href="http://google.com">
+                           <a href="http://google.com">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
+                        </td>
+                        <td>
+                            <a href="http://google.com">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                            </a>
+                            
+                            
+                        </td>
+                        <td>
+                            <a href="http://google.com">
+                                <span class="glyphicon glyphicon-trash"></span>
+                            </a>
+                            
+                            
                         </td>
                     </tr>
                     </tbody>
