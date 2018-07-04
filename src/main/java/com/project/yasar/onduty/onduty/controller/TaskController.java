@@ -1,3 +1,4 @@
+
 package com.project.yasar.onduty.onduty.controller;
 
 
@@ -80,6 +81,17 @@ public class TaskController {
         mav.addObject("projects", projectService.findAll());
         return mav;
     }
+    
+    
+    @RequestMapping(value = "/task/{id}/description", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView showDescription(@PathVariable("id") Long id) {
+        ModelAndView mav = new ModelAndView("layouts/taskDescription");
+        Task task = taskService.get(id);
+        mav.addObject("task", task);
+        return mav;
+    }
+    
     @RequestMapping(value = "/task/{id}/delete", method = RequestMethod.GET)
     @ResponseBody
     public Boolean deleteTask(@PathVariable("id") Long id) {

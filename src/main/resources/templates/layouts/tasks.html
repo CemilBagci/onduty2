@@ -40,9 +40,9 @@
                         <td th:text="${task2.taskenddate}"/>
                         <!--   <td th:text="${task2.description}"/> -->
                         <td>
-                            <a href="http://google.com">
+                            <div th:onclick="'javascript:showDescription('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-search"></span>
-                            </a>
+                            </div>
                         </td>
                         <td>
                             <div th:onclick="'javascript:update('+${task2.id}+')'">
@@ -76,7 +76,12 @@
         $.get('task/' + id+'/delete', (data) => {
             location.reload();
     })
+    },
+    this.showDescription = function(id) {
+    	 $.get('task/' + id+'/description', (data) => {
+             $(data).modal('show')
+    })
     }
+   
 </script>
 </html>
-
