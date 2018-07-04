@@ -27,6 +27,7 @@
                         <th>Task Description</th>
                         <th>Edit Task</th>
                         <th>Delete</th>
+                        <th>Detail-Comment</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,17 +42,22 @@
                         <!--   <td th:text="${task2.description}"/> -->
                         <td>
                             <div th:onclick="'javascript:showDescription('+${task2.id}+')'">
-                                <span class="glyphicon glyphicon-search"></span>
+                                <span class="glyphicon glyphicon-share-alt"></span>
                             </div>
                         </td>
                         <td>
                             <div th:onclick="'javascript:update('+${task2.id}+')'">
-                                <span class="glyphicon glyphicon-share-alt"></span>
+                                <span class="glyphicon glyphicon-edit"></span>
                             </div>
                         </td>
                         <td>
                             <div th:onclick="'javascript:removeItem('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-trash"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:onclick="'javascript:removeItem('+${task2.id}+')'">
+                                <span class="glyphicon glyphicon-search"></span>
                             </div>
                         </td>
                     </tr>
