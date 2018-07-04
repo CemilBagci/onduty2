@@ -9,6 +9,11 @@
             <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
                 CreateTask
             </button>
+            
+            
+            <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
+                AddComment
+            </button>
 
         </div>
     </div>
@@ -38,12 +43,12 @@
                         <td th:text="${task2.project?.name}"/>
                         <td th:text="${task2.taskstartdate}"/>
                         <td th:text="${task2.taskenddate}"/>
-                        <!--   <td th:text="${task2.description}"/> -->
+                        <td th:text="${task2.description}"/>
                         <td>
                             <a href="http://google.com">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
-                        </td>
+                        </td> 
                         <td>
                             <div th:onclick="'javascript:update('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
