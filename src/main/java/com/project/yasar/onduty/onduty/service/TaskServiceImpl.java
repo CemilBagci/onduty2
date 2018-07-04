@@ -44,8 +44,9 @@ public class TaskServiceImpl implements TaskService {
     @Transactional(readOnly = false)
     public Boolean delete(Long id) {
         try {
-            taskRepository.delete(taskRepository.findOne(id));
-            taskRepository.delete(id);
+            Task task = taskRepository.findOne(id);
+            taskRepository.delete(task);
+            //taskRepository.delete(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
