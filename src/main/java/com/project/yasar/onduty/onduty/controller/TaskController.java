@@ -36,7 +36,7 @@ public class TaskController {
     public ModelAndView showTask(@RequestParam Long id) {
         Task task = taskService.get(id);
         ModelAndView mav = new ModelAndView("main");
-        mav.addObject("task",task);
+        mav.addObject("task", task);
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }
@@ -53,7 +53,7 @@ public class TaskController {
                 .collect(Collectors.toList());
 
         mav.addObject("tasks", tasks);
-        mav.addObject("task",new Task());
+        mav.addObject("task", new Task());
         mav.addObject("personals", personalService.findAll());
         mav.addObject("projects", projectService.findAll());
 
@@ -63,10 +63,21 @@ public class TaskController {
 
 
     @RequestMapping(value = "/tasks", method = RequestMethod.POST)
-    public ModelAndView createTask( Task task, BindingResult bindingResult) {
+    public ModelAndView createTask(Task task, BindingResult bindingResult) {
         ModelAndView mav = new ModelAndView(new RedirectView("/tasks", true));
         task.setAssignerPersonal(personalService.getCurrentPersonal());
         task = taskService.createTask(task);
+        return mav;
+    }
+
+    @RequestMapping(value = "/task/{id}/updateForm", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView updateTaskForm(@PathVariable("id") Long id) {
+        ModelAndView mav = new ModelAndView("layouts/taskForm");
+        Task task = taskService.get(id);
+        mav.addObject("task", task);
+        mav.addObject("personals", personalService.findAll());
+        mav.addObject("projects", projectService.findAll());
         return mav;
     }
 }

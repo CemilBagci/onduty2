@@ -39,14 +39,14 @@
                         <td th:text="${task2.taskenddate}"/>
                         <!--   <td th:text="${task2.description}"/> -->
                         <td>
-                           <a href="http://google.com">
+                            <a href="http://google.com">
                                 <span class="glyphicon glyphicon-search"></span>
                             </a>
                         </td>
                         <td>
-                            <a href="http://google.com">
+                            <div th:onclick="'update('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
-                            </a>
+                            </div>
                         </td>
                         <td>
                             <a href="http://google.com">
@@ -63,5 +63,14 @@
     </div>
 </div>
 <div th:replace="layouts/taskForm :: taskForm"></div>
+<script th:inline="javascript">
+    this.update = function (id) {
+        $.get('task/' + id+'/updateForm', (data) => {
+            $(data).modal('show')
+        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+
+    })
+    }
+</script>
 </html>
 
