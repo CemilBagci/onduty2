@@ -31,6 +31,7 @@
                     </thead>
                     <tbody>
                     <tr th:each="task2:${tasks}">
+
                         <td th:text="${task2.name}"/>
                         <td th:text="${task2.taskpriority}"/>
                         <td th:text="${task2.assignerPersonal}"/>
@@ -44,14 +45,14 @@
                             </a>
                         </td>
                         <td>
-                            <div th:onclick="'update('+${task2.id}+')'">
+                            <div th:onclick="'javascript:update('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
                             </div>
                         </td>
                         <td>
-                            <a href="http://google.com">
+                            <div th:onclick="'javascript:removeItem('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-trash"></span>
-                            </a>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
@@ -69,6 +70,11 @@
             $(data).modal('show')
         setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
 
+    })
+    },
+    this.removeItem = function (id) {
+        $.get('task/' + id+'/delete', (data) => {
+            location.reload();
     })
     }
 </script>

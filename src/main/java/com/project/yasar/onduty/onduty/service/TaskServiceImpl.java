@@ -20,7 +20,7 @@ public class TaskServiceImpl implements TaskService {
     @Override
     @Transactional(readOnly = false)
     public Task createTask(Task task) {
-        return taskRepository.save(task);  
+        return taskRepository.save(task);
     }
 
     @Override
@@ -32,16 +32,26 @@ public class TaskServiceImpl implements TaskService {
     public String getAssignerpersonal(String assignerpersonal) {
         return null;
     }
-    
 
 
-	@Override
-	public Task get(Long id) {
-		// TODO Auto-generated method stub
-		return taskRepository.findOne(id);
-	}
+    @Override
+    public Task get(Long id) {
+        // TODO Auto-generated method stub
+        return taskRepository.findOne(id);
+    }
 
-
+    @Override
+    @Transactional(readOnly = false)
+    public Boolean delete(Long id) {
+        try {
+            taskRepository.delete(taskRepository.findOne(id));
+            taskRepository.delete(id);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 }

@@ -16,12 +16,6 @@ public interface TaskService {
 	String  getAssignerpersonal(String assignerpersonal);
 	Task get(Long id);
 
-	
-	
 
-
-   
-	
-	
-
+    Boolean delete(Long id);
 }

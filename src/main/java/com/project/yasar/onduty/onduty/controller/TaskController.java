@@ -80,6 +80,11 @@ public class TaskController {
         mav.addObject("projects", projectService.findAll());
         return mav;
     }
+    @RequestMapping(value = "/task/{id}/delete", method = RequestMethod.GET)
+    @ResponseBody
+    public Boolean deleteTask(@PathVariable("id") Long id) {
+        return taskService.delete(id);
+    }
 }
 
 
