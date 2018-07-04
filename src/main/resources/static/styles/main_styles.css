@@ -715,10 +715,12 @@ section
 }
 .home_text p
 {
+	
 	font-size: 16px;
-	font-weight: 500;
-	color: #4744f0;
-	line-height: 1.75;
+    font-weight: 500;
+    color: #4744f0;
+    line-height: 1.75;
+	
 }
 .home_button
 {

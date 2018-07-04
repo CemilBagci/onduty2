@@ -3172,8 +3172,12 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success {
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+    background-color: #efad49;
+    border-color: #efad49;
+    border-top-color: rgb(239, 173, 73);
+    border-right-color: rgb(239, 173, 73);
+    border-bottom-color: rgb(239, 173, 73);
+    border-left-color: rgb(239, 173, 73);
 }
 .btn-success:focus,
 .btn-success.focus {
@@ -3228,9 +3232,13 @@ fieldset[disabled] .btn-success.focus {
   background-color: #fff;
 }
 .btn-info {
-  color: #fff;
-  background-color: #5bc0de;
-  border-color: #46b8da;
+	color: #fff;
+    background-color: #efad49;
+    border-color: #efad49;
+    border-top-color: rgb(239, 173, 73);
+    border-right-color: rgb(239, 173, 73);
+    border-bottom-color: rgb(239, 173, 73);
+    border-left-color: rgb(239, 173, 73);
 }
 .btn-info:focus,
 .btn-info.focus {
