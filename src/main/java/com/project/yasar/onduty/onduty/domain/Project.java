@@ -110,4 +110,8 @@ public class Project {
 		this.tasks = tasks;
 	}
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

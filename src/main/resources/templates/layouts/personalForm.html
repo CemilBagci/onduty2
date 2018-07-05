@@ -8,7 +8,7 @@
                         <span>Surname:</span><input class="form-control" th:field="*{user.surname}"/>
                         <span>Email:</span><input class="form-control" th:field="*{user.email}"/>
                         <span>Department:</span><select class="selectpicker" multiple="multiple" data-container="content" id="departments">
-                            <option th:each="department:*{departments}"
+                            <option th:each="department:${departments}"
                                     th:text="${department.departmentName}"
                                     th:value="${department.id}"></option>
                         </select>

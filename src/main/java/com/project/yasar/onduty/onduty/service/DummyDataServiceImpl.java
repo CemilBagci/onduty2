@@ -18,29 +18,29 @@ import java.util.*;
 public class DummyDataServiceImpl implements DummyDataService {
     @Autowired
     private RoleService roleService;
-    
+
     @Autowired
     private UserService userService;
-    
+
     @Autowired
     private PersonalService personalService;
-    
+
     @Autowired
     private TaskService taskService;
-    
+
     @Autowired
     private ProjectService projectService;
-    
+
     @Autowired
     private ProjectRepository projectRepository;
-    
+
     @Autowired
     private PersonalRepository personalRepository;
-    
+
     @Autowired   // burda autowired yoktu? *melisa
-	private DepartmentService departmentService;
-    
-    
+    private DepartmentService departmentService;
+
+
     @Override
     public void createDummyData() {
         Role roleAdmin = roleService.findRoleByRoleNameEquals("ROLE_ADMIN");
@@ -53,33 +53,28 @@ public class DummyDataServiceImpl implements DummyDataService {
             user = new User("1", "1", "1", new ArrayList<>(Collections.singletonList(roleAdmin)), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
         }
-        
-    
 
-        Department department =new Department("office");
-        departmentService.createDepartment(department);
-        Personal personal = personalService.findPersonalByUser(user);
-        List<Department> departments = new ArrayList<>();
-        Set<Project> projects = new HashSet<>();
-        departments.add(department);
-   //     projects.add(project);
-        if(personal ==null) {
-            personal = new Personal(user,departments, projects); //doğru mu?
-            personal = personalService.createPersonal(personal);
-            //personalRepository.save(personal);
-      /* 
-         }
-        if (personal.getGroups().size()<10) {
-            Group group =new Group("group"+new Random().nextInt(50));
-            groupRepository.save(group);
-            personal.getGroups().add(group);
-            personalRepository.save(personal);
-        } 
-        */
+
+        List<Department> all = departmentService.findAll();
+        if (all.size() < 2) {
+            Department department = new Department("office");
+            Department department2 = new Department("office");
+            departmentService.createDepartment(department);
+            departmentService.createDepartment(department2);
+            Personal personal = personalService.findPersonalByUser(user);
+            List<Department> departments = new ArrayList<>();
+            Set<Project> projects = new HashSet<>();
+            departments.add(department);
+            departments.add(department2);
+            if (personal == null) {
+                personal = new Personal(user, departments, projects); //doğru mu?
+                personal = personalService.createPersonal(personal);
+            }
         }
 
-    	}
-    
+
+    }
+
 }
 	
 

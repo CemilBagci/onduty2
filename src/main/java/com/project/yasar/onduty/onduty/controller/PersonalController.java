@@ -32,6 +32,7 @@ public class PersonalController {
     @RequestMapping(value = "personal", method = RequestMethod.GET)
     public ModelAndView showPersonal() {
         ModelAndView mav = new ModelAndView("main");
+        mav.addObject("departments",departmentService.findAll());
         mav.addObject("contentForm", "layouts/personalForm");
         return mav;
     }
