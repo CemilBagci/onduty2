@@ -1,7 +1,7 @@
-<div th:fragment="taskForm" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div th:fragment="taskDetail" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form th:object="${task}" method="POST">
+            <form th:object="${task}" th:action="@{/tasks}" method="POST">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
@@ -9,36 +9,37 @@
                 </div>
                 <div class="modal-body">
                     <input type="hidden" th:field="*{id}"/>
-                     <div>
-                        <span>TaskName:</span><input class="form-control" th:field="*{name}"/>
-                        <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}"/>
+                    <div>
+                        <span>TaskName:</span><input class="form-control" th:field="*{name}"  readonly="readonly"/>
+                        <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}" readonly="readonly"/>
                         <span>TaskPriority</span> <select class="selectpicker"  data-container="content"
-                                                               name="taskpriority">
+                                                               name="taskpriority"  readonly="readonly" > 
                         <option th:each="taskpriority:${T(com.project.yasar.onduty.onduty.domain.TaskPriority).values()}"
                                 th:text="${taskpriority.toString()}"
                                 th:value="${taskpriority.name()}"></option>
                     </select>
 
-                        <!--<span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/> -->
                         <p></p>
                         <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
-                                name="assigneePersonals">
+                                name="assigneePersonals"readonly="readonly" >
                             <option th:each="personal:${personals}"
                                     th:text="${personal}"
                                     th:value="${personal.id}"></option>
                         </select>
                         <p></p>
-                        <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"/>
-                        <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}"/>
+                        <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"  readonly="readonly"/>
+                        <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}" readonly="readonly"/>
                         <span>Project</span><select class="selectpicker" data-container="content"
-                                name="project">
+                                name="project" readonly="readonly" >
                             <option th:each="project:${projects}" th:checked="${task.project == project}"
                                     th:text="${project}"
                                     th:value="${project.id}"></option>
                         </select>
-                         <span>TaskDescription</span><input class="form-control" th:field="*{description}"/>
+                         <span>TaskDescription</span><input class="form-control" th:field="*{description}"  readonly="readonly"/>
                     </div>
-                </div>    
+
+
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>

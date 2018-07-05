@@ -77,7 +77,7 @@ p
 	font-size: 20px;
 	line-height: 2;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: #337ab7;
 	-webkit-font-smoothing: antialiased;
 	-webkit-text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
@@ -235,8 +235,7 @@ section
 }
 .button::after
 {
-	display: block;
-	position: absolute;
+	
 	left: 0;
 	bottom: 0;
 	width: 100%;
@@ -718,7 +717,7 @@ section
 	
 	font-size: 16px;
     font-weight: 500;
-    color: #4744f0;
+    color: #337ab7;
     line-height: 1.75;
 	
 }
@@ -1279,7 +1278,7 @@ section
 .copyright
 {
 	width: 100%;
-	background: #020523;
+	background: #eee;
 }
 .copyright_content
 {

@@ -97,6 +97,19 @@ public class TaskController {
     public Boolean deleteTask(@PathVariable("id") Long id) {
         return taskService.delete(id);
     }
+    
+    @RequestMapping(value = "/task/{id}/detail", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView showDetail(@PathVariable("id") Long id) {
+        ModelAndView mav = new ModelAndView("layouts/taskDetail");
+        Task task = taskService.get(id);
+        mav.addObject("task", task);
+        mav.addObject("personals", personalService.findAll());
+        mav.addObject("projects", projectService.findAll());
+        return mav;
+    }
+    
+    
 }
 
 
