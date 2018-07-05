@@ -21,16 +21,19 @@ public class Task {
     @Column
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
-
+    
+    
     @JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
     private Personal assignerPersonal;
 
     @JoinColumn()
-    @OneToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH)
     private List<Personal> assigneePersonals;
 
-    @Column
+  
+
+	@Column
     @Enumerated(EnumType.ORDINAL)
     private TaskPriority taskpriority;
 
