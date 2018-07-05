@@ -39,7 +39,6 @@
                         <td th:text="${task2.project?.name}"/>
                         <td th:text="${task2.taskstartdate}"/>
                         <td th:text="${task2.taskenddate}"/>
-                        <!--   <td th:text="${task2.description}"/> -->
                         <td>
                             <div th:onclick="'javascript:showDescription('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
@@ -56,15 +55,13 @@
                             </div>
                         </td>
                         <td>
-                            <div th:onclick="'javascript:removeItem('+${task2.id}+')'">
+                            <div th:onclick="'javascript:showDetail('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-search"></span>
                             </div>
                         </td>
                     </tr>
                     </tbody>
-
                 </table>
-
             </div>
         </div>
     </div>
@@ -87,7 +84,12 @@
     	 $.get('task/' + id+'/description', (data) => {
              $(data).modal('show')
     })
-    }
+    },
+    this.showDetail = function(id) {
+   	 $.get('task/' + id+'/detail', (data) => {
+            $(data).modal('show')
+   })
+   }
    
 </script>
 </html>
