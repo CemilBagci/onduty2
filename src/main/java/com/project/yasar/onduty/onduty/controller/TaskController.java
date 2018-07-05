@@ -97,8 +97,10 @@ public class TaskController {
     public Boolean deleteTask(@PathVariable("id") Long id) {
         return taskService.delete(id);
     }
-    
-    @RequestMapping(value = "/task/{id}/detail", method = RequestMethod.GET)
+
+
+
+    @RequestMapping(value = "/task/{id}/showDetail", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView showDetail(@PathVariable("id") Long id) {
         ModelAndView mav = new ModelAndView("layouts/taskDetail");
@@ -108,8 +110,6 @@ public class TaskController {
         mav.addObject("projects", projectService.findAll());
         return mav;
     }
-    
-    
 }
 
 

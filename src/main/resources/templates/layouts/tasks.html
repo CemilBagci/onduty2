@@ -39,6 +39,7 @@
                         <td th:text="${task2.project?.name}"/>
                         <td th:text="${task2.taskstartdate}"/>
                         <td th:text="${task2.taskenddate}"/>
+                        <!--   <td th:text="${task2.description}"/> -->
                         <td>
                             <div th:onclick="'javascript:showDescription('+${task2.id}+')'">
                                 <span class="glyphicon glyphicon-share-alt"></span>
@@ -61,7 +62,9 @@
                         </td>
                     </tr>
                     </tbody>
+
                 </table>
+
             </div>
         </div>
     </div>
@@ -84,12 +87,13 @@
     	 $.get('task/' + id+'/description', (data) => {
              $(data).modal('show')
     })
-    },
-    this.showDetail = function(id) {
-   	 $.get('task/' + id+'/detail', (data) => {
+    }
+    this.showDetail = function(id){
+        $.get('task/' + id+'/showDetail', (data) =>{
             $(data).modal('show')
-   })
-   }
-   
+        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+        })
+
+    }
 </script>
 </html>

@@ -1,48 +1,112 @@
-<div th:fragment="taskDetail" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+<div th:fragment="taskDetail" class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel">
+    <div class="modal-dialog" style=" width: 750px;  margin: auto;" role="document">
         <div class="modal-content">
-            <form th:object="${task}" th:action="@{/tasks}" method="POST">
+            <form th:object="${task}" th:action="@{/tasks}" method="POST" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                 </div>
                 <div class="modal-body">
-                    <input type="hidden" th:field="*{id}"/>
-                    <div>
-                        <span>TaskName:</span><input class="form-control" th:field="*{name}"  readonly="readonly"/>
-                        <span>TaskStateType:</span><input class="form-control" th:field="*{taskstatetype}" readonly="readonly"/>
-                        <span>TaskPriority</span> <select class="selectpicker"  data-container="content"
-                                                               name="taskpriority"  readonly="readonly" > 
-                        <option th:each="taskpriority:${T(com.project.yasar.onduty.onduty.domain.TaskPriority).values()}"
-                                th:text="${taskpriority.toString()}"
-                                th:value="${taskpriority.name()}"></option>
-                    </select>
-                        <p></p>
-                        <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
-                                name="assigneePersonals"readonly="readonly" >
-                            <option th:each="personal:${personals}"
-                                    th:text="${personal}"
-                                    th:value="${personal.id}"></option>
-                        </select>
-                        <p></p>
-                        <span>TaskStartDate</span><input class="form-control" th:field="*{taskstartdate}"  readonly="readonly"/>
-                        <span>TaskEndDate</span><input class="form-control" th:field="*{taskenddate}" readonly="readonly"/>
-                        <span>Project</span><select class="selectpicker" data-container="content"
-                                name="project" readonly="readonly" >
-                            <option th:each="project:${projects}" th:checked="${task.project == project}"
-                                    th:text="${project}"
-                                    th:value="${project.id}"></option>
-                        </select>
-                         <span>TaskDescription</span><input class="form-control" th:field="*{description}"  readonly="readonly"/>
+
+                    <div class="row">
+                        <div class="col-md-6 vdivide">
+                            <input type="hidden" th:field="*{id}"/>
+                            <div class="row">
+                                <div class="col-md-6"><span>Task Name:</span></div>
+                                <div class="col-md-6">
+                                    <input class="form-control" th:field="*{name}"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>TaskStateType:</span></div>
+                                <div class="col-md-6">
+                                    <input class="form-control" th:field="*{taskstatetype}"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>TaskPriority</span></div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-container="content"
+                                            name="taskpriority" disabled="disabled">
+                                        <option th:each="taskpriority:${T(com.project.yasar.onduty.onduty.domain.TaskPriority).values()}"
+                                                th:text="${taskpriority.toString()}"
+                                                th:value="${taskpriority.name()}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>AssigneePersonals</span></div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" multiple="multiple"
+                                            data-container="content"
+                                            name="assigneePersonals" disabled="disabled">
+                                        <option th:each="personal:${personals}"
+                                                th:text="${personal}"
+                                                th:value="${personal.id}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>TaskStartDate</span></div>
+                                <div class="col-md-6">
+                                    <input class="form-control" th:field="*{taskstartdate}"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>TaskEndDate</span></div>
+                                <div class="col-md-6">
+                                    <input class="form-control" th:field="*{taskenddate}"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>Project</span></div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-container="content"
+                                            name="project" disabled="disabled">
+                                        <option th:each="project:${projects}" th:checked="${task.project == project}"
+                                                th:text="${project}"
+                                                th:value="${project.id}"></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6"><span>TaskDescription</span></div>
+                                <div class="col-md-6">
+                                    <input class="form-control" th:field="*{description}"
+                                           readonly="readonly"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div>Ahmet : mesaj 1</div>
+                                <div>Mehmet : mesaj 2</div>
+                            </div>
+                            <div class="row">
+                                <input type="text" multiple="multiple"/>
+                                <input type="button" value="Send"/>
+                            </div>
+                        </div>
                     </div>
 
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
                 </div>
             </form>
         </div>
     </div>
+    <style>
+        .row {
+            margin-top:5px
+        }
+    </style>
 </div>
