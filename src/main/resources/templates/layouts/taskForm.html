@@ -21,7 +21,7 @@
                         <!--<span>TaskPriority</span><input class="form-control" th:field="*{taskpriority}"/> -->
                         <p></p>
                         <span>AssigneePersonals</span> <select class="selectpicker" multiple="multiple" data-container="content"
-                                name="assigneePersonals">
+                                                               th:field="*{assigneePersonals}">
                             <option th:each="personal:${personals}"
                                     th:text="${personal}"
                                     th:value="${personal.id}"></option>

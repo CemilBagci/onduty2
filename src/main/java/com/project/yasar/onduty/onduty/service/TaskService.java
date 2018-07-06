@@ -15,7 +15,7 @@ public interface TaskService {
 	
 	String  getAssignerpersonal(String assignerpersonal);
 	Task get(Long id);
-
+	List<Task> findTaskByAssignerPersonalEquals(Personal personal);
 
     Boolean delete(Long id);
 }

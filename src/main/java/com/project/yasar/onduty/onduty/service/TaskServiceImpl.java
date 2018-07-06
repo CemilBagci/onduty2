@@ -41,6 +41,11 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
+    public List<Task> findTaskByAssignerPersonalEquals(Personal personal) {
+        return taskRepository.findTaskByAssignerPersonalEquals(personal);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public Boolean delete(Long id) {
         try {

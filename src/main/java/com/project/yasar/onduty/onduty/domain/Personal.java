@@ -19,11 +19,7 @@ public class Personal {
     @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Department> departments = new ArrayList<Department>();
-    
-    @JoinColumn(name="project_id")
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    private Set<Project> projects = new HashSet<>();
-    
+
     public List<Department> getDepartments() {
         return departments;
     }
@@ -31,19 +27,10 @@ public class Personal {
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
-    
-    public Set<Project> getProjects() {
-		return projects;
-	}
 
-	public void setProjects(Set<Project> projects) {
-		this.projects = projects;
-	}
- 
     public Personal(User user, List<Department> departments, Set<Project> projects ) {
         this.user = user;
         this.departments = departments;
-        this.projects = projects;
     }
 
     public Personal() {

@@ -14,6 +14,14 @@
                         <span>ProjectName:</span><input class="form-control" th:field="*{name}"/>
                         <span>ProjectStartTime</span><input class="form-control" th:field="*{starttime}"/>
                         <span>ProjectEndDate</span><input class="form-control" th:field="*{enddate}"/>
+                        <span>AssigneePersonals</span>
+                        <select class="selectpicker" multiple="multiple" data-container="content" th:field="*{personals}"
+                                                              >
+                        <option th:each="personal2:${personals}"
+                                th:text="${personal2}"
+                                th:value="${personal2.id}"></option>
+                    </select>
+
 
                     </div>
 

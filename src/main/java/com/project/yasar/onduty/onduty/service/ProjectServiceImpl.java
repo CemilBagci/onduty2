@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
+import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Project;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.repository.ProjectRepository;
@@ -14,10 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service("projectService")
 @Transactional(readOnly = true)
-public class ProjectServiceImpl implements 	ProjectService {
+public class ProjectServiceImpl implements ProjectService {
     @Autowired
     ProjectRepository projectRepository;
-
 
 
     @Transactional(readOnly = false)
@@ -56,7 +56,11 @@ public class ProjectServiceImpl implements 	ProjectService {
         }
     }
 
+    @Override
+    public List<Project> findProjectsByPersonalsContains(Personal personal) {
+        return projectRepository.findProjectsByPersonalsContains(personal);
+    }
 
-    
+
 }
 

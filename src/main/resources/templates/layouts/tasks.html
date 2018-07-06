@@ -4,26 +4,22 @@
 <div class="">
     <div class="row">
         <div style="width:100%">
-      	      
-    
-       <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
-                CreateTask
-            </button>
-            
-          
-  <!-- Example split danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-danger">ShowTask</button>
-  <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="sr-only">Toggle Dropdown</span>
-  </button>
-  <div class="dropdown-menu">
-    <a th:href="@{/assignedTasks}" class="dropdown-item" href="#">AssignedTasks</a>
-    <a th:href="@{/MyAssignment}" href="#">MyAssignment</a>
 
-  </div>
-</div>
-            
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#myModal">CreateTask</button>
+
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Show/List Task
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a href="?show=assigned">AssignedByMe</a></li>
+                        <li><a href="?show=all">AssignedToMe</a></li>
+                    </ul>
+                </div>
+            </div>
+
         </div>
     </div>
     <div class="row">
@@ -86,27 +82,31 @@
 <div th:replace="layouts/taskForm :: taskForm"></div>
 <script th:inline="javascript">
     this.update = function (id) {
-        $.get('task/' + id+'/updateForm', (data) => {
+        $.get('task/' + id + '/updateForm', (data) => {
             $(data).modal('show')
-        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+        setTimeout(function () {
+            $('.selectpicker').selectpicker()
+        }, 500);
 
     })
     },
-    this.removeItem = function (id) {
-        $.get('task/' + id+'/delete', (data) => {
-            location.reload();
-    })
-    },
-    this.showDescription = function(id) {
-    	 $.get('task/' + id+'/description', (data) => {
-             $(data).modal('show')
-    })
-    }
-    this.showDetail = function(id){
-        $.get('task/' + id+'/showDetail', (data) =>{
-            $(data).modal('show')
-        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+        this.removeItem = function (id) {
+            $.get('task/' + id + '/delete', (data) => {
+                location.reload();
         })
+        },
+        this.showDescription = function (id) {
+            $.get('task/' + id + '/description', (data) => {
+                $(data).modal('show')
+        })
+        }
+    this.showDetail = function (id) {
+        $.get('task/' + id + '/showDetail', (data) => {
+            $(data).modal('show')
+        setTimeout(function () {
+            $('.selectpicker').selectpicker()
+        }, 500);
+    })
 
     }
 </script>

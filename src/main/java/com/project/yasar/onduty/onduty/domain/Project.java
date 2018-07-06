@@ -3,9 +3,7 @@ package com.project.yasar.onduty.onduty.domain;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 public class Project {
@@ -36,7 +34,9 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> tasks = new ArrayList<Task>();
 
-    
+    @JoinColumn(name="personal_id")
+    @OneToMany(cascade = CascadeType.DETACH)
+    private Set<Personal> personals = new HashSet<>();
 
     public Project(String name, Date starttime, Date enddate, ProjectState projectstate, StateType statetype, List<Personal> personals, List<Task> tasks) {
         super();
@@ -109,6 +109,14 @@ public class Project {
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
+
+    public Set<Personal> getPersonals() {
+        return personals;
+    }
+
+    public void setPersonals(Set<Personal> personals) {
+        this.personals = personals;
+    }
 
     @Override
     public String toString() {

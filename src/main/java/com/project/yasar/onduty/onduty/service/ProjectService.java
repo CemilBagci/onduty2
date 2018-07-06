@@ -1,5 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
+import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Project;
 import com.project.yasar.onduty.onduty.domain.Task;
 
@@ -16,6 +17,7 @@ public interface ProjectService {
     List<Project> findAll();
     Project get(Long id);
     Boolean delete(Long id);
+    List<Project> findProjectsByPersonalsContains(Personal personal);
 }
 
 

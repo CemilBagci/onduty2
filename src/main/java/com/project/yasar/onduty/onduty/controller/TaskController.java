@@ -2,6 +2,7 @@
 package com.project.yasar.onduty.onduty.controller;
 
 
+import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Project;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.service.PersonalService;
@@ -16,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -43,15 +45,20 @@ public class TaskController {
     }
 
     @RequestMapping(value = {"/tasks"}, method = RequestMethod.GET)
-    public ModelAndView showTasks() {
+    public ModelAndView showTasks(@RequestParam(value = "show",required = false) String show) {
         ModelAndView mav = new ModelAndView("main");
-
-        List<Task> tasks = personalService.getCurrentPersonal()
-                .getProjects()
-                .stream()
-                .map(Project::getTasks)
-                .flatMap(Collection::stream)
-                .collect(Collectors.toList());
+        Personal currentPersonal = personalService.getCurrentPersonal();
+        List<Project> projectsByPersonalsContains = projectService.findProjectsByPersonalsContains(currentPersonal);
+        List<Task> tasks;
+        if ("assigned".equals(show)) {
+            tasks = taskService.findTaskByAssignerPersonalEquals(currentPersonal);
+        } else {
+            tasks =
+                    projectsByPersonalsContains.stream()
+                            .map(Project::getTasks)
+                            .flatMap(Collection::stream)
+                            .collect(Collectors.toList());
+        }
 
         mav.addObject("tasks", tasks);
         mav.addObject("task", new Task());
@@ -81,8 +88,8 @@ public class TaskController {
         mav.addObject("projects", projectService.findAll());
         return mav;
     }
-    
-    
+
+
     @RequestMapping(value = "/task/{id}/description", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView showDescription(@PathVariable("id") Long id) {
@@ -91,13 +98,12 @@ public class TaskController {
         mav.addObject("task", task);
         return mav;
     }
-    
+
     @RequestMapping(value = "/task/{id}/delete", method = RequestMethod.GET)
     @ResponseBody
     public Boolean deleteTask(@PathVariable("id") Long id) {
         return taskService.delete(id);
     }
-
 
 
     @RequestMapping(value = "/task/{id}/showDetail", method = RequestMethod.GET)

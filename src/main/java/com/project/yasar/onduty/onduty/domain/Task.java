@@ -27,7 +27,7 @@ public class Task {
     @ManyToOne(cascade = CascadeType.DETACH)
     private Personal assignerPersonal;
 
-    @JoinColumn()
+    @JoinColumn
     @ManyToMany(cascade = CascadeType.DETACH)
     private List<Personal> assigneePersonals;
 
