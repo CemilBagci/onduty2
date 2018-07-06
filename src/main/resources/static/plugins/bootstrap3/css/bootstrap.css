@@ -3730,6 +3730,7 @@ tbody.collapse.in {
 }
 .btn-group > .btn + .dropdown-toggle {
   padding-right: 8px;
+  padding-bottom: 10px;
   padding-left: 8px;
 }
 .btn-group > .btn-lg + .dropdown-toggle {
