@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.LinkedList;
 
 @Service("taskService")
 @Transactional(readOnly = true)
@@ -41,8 +39,8 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> findTaskByAssignerPersonalEquals(Personal personal) {
-        return taskRepository.findTaskByAssignerPersonalEquals(personal);
+    public LinkedList<Task> findTaskByAssignerPersonalEquals(Personal personal) {
+        return taskRepository.findByAssignerPersonalOrderByIdAsc(personal);
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.project.yasar.onduty.onduty.domain.Project;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.TaskPriority;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
@@ -15,6 +16,6 @@ public interface TaskRepository extends CrudRepository<Task, Long> {
 	
     Task findTaskByName(String name);
 
-    List<Task> findTaskByAssignerPersonalEquals(Personal personal);
+    LinkedList<Task> findByAssignerPersonalOrderByIdAsc(Personal personal);
 
 }

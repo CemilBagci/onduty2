@@ -2,6 +2,7 @@ package com.project.yasar.onduty.onduty.service;
 
 import com.project.yasar.onduty.onduty.domain.*;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public interface TaskService {
 	
 	String  getAssignerpersonal(String assignerpersonal);
 	Task get(Long id);
-	List<Task> findTaskByAssignerPersonalEquals(Personal personal);
+	LinkedList<Task> findTaskByAssignerPersonalEquals(Personal personal);
 
     Boolean delete(Long id);
 }

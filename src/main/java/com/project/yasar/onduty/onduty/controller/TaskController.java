@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -49,7 +50,7 @@ public class TaskController {
         ModelAndView mav = new ModelAndView("main");
         Personal currentPersonal = personalService.getCurrentPersonal();
         List<Project> projectsByPersonalsContains = projectService.findProjectsByPersonalsContains(currentPersonal);
-        List<Task> tasks;
+        LinkedList<Task> tasks;
         if ("assigned".equals(show)) {
             tasks = taskService.findTaskByAssignerPersonalEquals(currentPersonal);
         } else {
@@ -57,7 +58,7 @@ public class TaskController {
                     projectsByPersonalsContains.stream()
                             .map(Project::getTasks)
                             .flatMap(Collection::stream)
-                            .collect(Collectors.toList());
+                            .collect(Collectors.toCollection(LinkedList::new));
         }
 
         mav.addObject("tasks", tasks);
