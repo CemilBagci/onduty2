@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<div class="">
+    <div class="row">
+        <div style="width:100%">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner col-sm-12 ">
+                <table class="table" style="background-color:white;">
+                    <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Task Priority</th>
+                        <th>Assigner</th>
+                        <th>Project</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Task Description</th>
+                        <th>Edit Task</th>
+                        <th>Delete</th>
+                        <th>Detail-Comment</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="task2:${tasks}">
+
+                        <td th:text="${task2.name}"/>
+                        <td th:text="${task2.taskpriority}"/>
+                        <td th:text="${task2.assignerPersonal}"/>
+                        <td th:text="${task2.project?.name}"/>
+                        <td th:text="${task2.taskstartdate}"/>
+                        <td th:text="${task2.taskenddate}"/>
+                        <!--   <td th:text="${task2.description}"/> -->
+                        <td>
+                            <div th:onclick="'javascript:showDescription('+${task2.id}+')'">
+                                <span class="glyphicon glyphicon-share-alt"></span>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>
