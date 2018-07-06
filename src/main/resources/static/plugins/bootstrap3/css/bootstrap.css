@@ -3351,19 +3351,23 @@ fieldset[disabled] .btn-warning.focus {
 }
 .btn-danger {
   color: #fff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+    background-color: #efad49;
+    border-color: rgb(239, 173, 73);
+    border-top-color: rgb(239, 173, 73);
+    border-right-color: rgb(239, 173, 73);
+    border-bottom-color: rgb(239, 173, 73);
+    border-left-color: rgb(239, 173, 73);
 }
 .btn-danger:focus,
 .btn-danger.focus {
   color: #fff;
-  background-color: #c9302c;
-  border-color: #761c19;
+  background-color:#efad49;
+  border-color: #efad49;
 }
 .btn-danger:hover {
   color: #fff;
-  background-color: #c9302c;
-  border-color: #ac2925;
+  background-color: #efad49;
+  border-color: #efad49;
 }
 .btn-danger:active,
 .btn-danger.active,
