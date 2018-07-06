@@ -54,14 +54,21 @@ public class DummyDataServiceImpl implements DummyDataService {
             user = userService.createUser(user);
         }
 
+        User user2 = userService.findUserByUsernameEquals("2");
+        if (user2 == null) {
+            user2 = new User("2", "2", "2", new ArrayList<>(Collections.singletonList(roleAdmin)), "2", "2", State.ACTIVE);
+            user2 = userService.createUser(user2);
+        }
+
 
         List<Department> all = departmentService.findAll();
-        if (all.size() < 2) {
+        if (all.size() < 3) {
             Department department = new Department("office");
             Department department2 = new Department("office");
             departmentService.createDepartment(department);
             departmentService.createDepartment(department2);
             Personal personal = personalService.findPersonalByUser(user);
+            Personal personal2= personalService.findPersonalByUser(user2);
             List<Department> departments = new ArrayList<>();
             Set<Project> projects = new HashSet<>();
             departments.add(department);
@@ -70,6 +77,12 @@ public class DummyDataServiceImpl implements DummyDataService {
                 personal = new Personal(user, departments, projects); //doğru mu?
                 personal = personalService.createPersonal(personal);
             }
+            if(personal2 == null){
+                personal2 =  new Personal(user2,departments,projects);
+                personal2 = personalService.createPersonal(personal2);
+
+            }
+
         }
 
 

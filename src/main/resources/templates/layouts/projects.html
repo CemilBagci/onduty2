@@ -57,19 +57,17 @@
         </div>
     </div>
 </div>
-<!-- <div th:replace="layouts/projectForm :: projectForm"></div> -->
+
+ <div th:replace="layouts/projectForm :: projectForm"></div>
 
 <div id="modalDiv"></div>
-
 
 <script th:inline="javascript">
 
     this.updateItem = function (id) {
         $.get('projects/' + id+'/updateForm', (data) => {
-        	$("#modalDiv").html(data);
-        	$("#myModal").modal("toggle");
-//             $(data).modal('show')
-        //setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+            $(data).modal('show')
+        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
     })
     }
     this.removeItem = function (id) {
@@ -77,4 +75,6 @@
             location.reload();
     })
     }
-    </script>
+</script>
+
+
