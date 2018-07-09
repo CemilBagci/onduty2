@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="home_content_inner">
+                <div style="width:100%">
+
+
+                    <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">
+                        CreateUser
+                    </button>
+
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="home_content_inner col-sm-12 " >
+                            <table class="table" style="background-color:white;">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Email</th>
+                                    <th>Edit User</th>
+                                    <th>Delete User</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="user4:${users}">
+                                    <td   th:text="${user4.name}"/>
+                                    <td   th:text="${user4.surname}"/>
+                                    <td   th:text="${user4.email}"/>
+
+
+                                    <td>
+                                        <div th:onclick="'javascript:updateItem('+${user4.id}+')'">
+                                            <span class="glyphicon glyphicon-edit"></span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div th:onclick="'javascript:removeItem('+${user4.id}+')'">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="layouts/registerForm :: registerForm"></div>
+
+<div id="modalDiv"></div>
+
+<script th:inline="javascript">
+
+    this.updateItem = function (id) {
+        $.get('register/' + id+'/updateForm', (data) => {
+            $(data).modal('show')
+        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+    })
+    }
+    this.removeItem = function (id) {
+        $.get('register/' + id+'/delete', (data) => {
+            location.reload();
+    })
+    }
+</script>
+
+

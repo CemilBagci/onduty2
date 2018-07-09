@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
 @Service("userService")
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
@@ -24,6 +28,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUserByUsernameEquals(String username) {
         return userRepository.findUserByUsernameEquals(username);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
+                .collect(Collectors.toList());
     }
 
 
