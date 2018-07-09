@@ -36,6 +36,25 @@ public class UserServiceImpl implements UserService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional(readOnly = false)
+    public Boolean delete(Long id) {
+        try {
+            User user = userRepository.findOne(id);
+            userRepository.delete(user);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public User get(Long id) {
+        return userRepository.findOne(id);
+    }
+
 
 }
 

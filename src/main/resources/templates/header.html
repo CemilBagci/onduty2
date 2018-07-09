@@ -1,4 +1,4 @@
-<div th:fragment="header" class="div2" style="z-index: 1 !important">
+<div th:fragment="header" class="div2" style="z-index: 1 !important"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -34,7 +34,7 @@
                     <li role="presentation"><a th:href="'/projects'">Projects</a></li>
                     <li role="presentation"><a th:href="'/tasks'">Tasks</a></li>
                     <li role="presentation"><a th:href="'/contact'">Contact</a></li>
-                    <li role="presentation"><a th:href="'/register'">Users</a></li>
+                    <li role="presentation" sec:authorize="hasRole('ROLE_ADMIN')" ><a th:href="'/register'">Users</a></li>
 
                 </ul>
 

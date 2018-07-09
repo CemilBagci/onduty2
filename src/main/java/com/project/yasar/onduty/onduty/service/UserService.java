@@ -10,5 +10,7 @@ public interface UserService {
 
     User createUser(User user);
     User findUserByUsernameEquals(String username);
-     List<User> findAll();
+    List<User> findAll();
+    Boolean delete(Long id);
+    User get(Long id);
 }
