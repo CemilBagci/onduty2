@@ -67,7 +67,7 @@ public class DummyDataServiceImpl implements DummyDataService {
 
 
         List<Department> all = departmentService.findAll();
-        if (all.size() < 9) {
+        if (all.size() < 99999) {
             Department department = new Department("office");
             Department department2 = new Department("office");
             departmentService.createDepartment(department);

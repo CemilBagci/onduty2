@@ -35,7 +35,7 @@ public class Project {
     private List<Task> tasks = new ArrayList<Task>();
 
     @JoinColumn(name="personal_id")
-    @OneToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.REFRESH)
     private Set<Personal> personals = new HashSet<>();
 
     public Project(String name, Date starttime, Date enddate, ProjectState projectstate, StateType statetype, List<Personal> personals, List<Task> tasks) {
