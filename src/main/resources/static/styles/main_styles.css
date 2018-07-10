@@ -5,12 +5,13 @@
 
 [Table of Contents]
 
+
 1. Fonts
 2. Body and some general stuff
 3. Header
 	3.1 Top Bar
 	3.2 Header Content
-	3.3 Logo
+	3.3 Logo 
 4. Menu
 5. Home
 6. Boxes
@@ -717,8 +718,10 @@ section
 	
 	font-size: 16px;
     font-weight: 500;
-    color: #4a75c4;
+    color: #c4a54a;
     line-height: 1.75;
+    
+    
 	
 }
 .home_button
