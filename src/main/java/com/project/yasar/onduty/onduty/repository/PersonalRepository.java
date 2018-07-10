@@ -1,7 +1,6 @@
 package com.project.yasar.onduty.onduty.repository;
 
 import com.project.yasar.onduty.onduty.domain.Department;
-import com.project.yasar.onduty.onduty.domain.Group;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Task;
 import com.project.yasar.onduty.onduty.domain.User;
