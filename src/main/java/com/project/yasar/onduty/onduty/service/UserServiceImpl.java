@@ -46,8 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> findAll() {
-        return StreamSupport.stream(userRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
+        return new ArrayList<>(userRepository.findAllByStateEquals(State.ACTIVE));
     }
 
     @Override
