@@ -1,6 +1,7 @@
 package com.project.yasar.onduty.onduty.controller;
 
 import com.project.yasar.onduty.onduty.domain.*;
+import com.project.yasar.onduty.onduty.service.DepartmentService;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.RoleService;
 import com.project.yasar.onduty.onduty.service.UserService;
@@ -26,6 +27,8 @@ public class RegisterController {
     private RoleService roleService;
     @Autowired
     private PersonalService personalService;
+    @Autowired
+    private DepartmentService departmentService;
 
 
     @RequestMapping(value = {"/register"}, method = RequestMethod.GET)
@@ -33,6 +36,7 @@ public class RegisterController {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("user", new User());
         mav.addObject("users", userService.findAll());
+        mav.addObject("departments",departmentService.findAll());
         mav.addObject("contentForm", "layouts/register");
         return mav;
     }
