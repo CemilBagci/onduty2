@@ -33,7 +33,7 @@ public class PersonalController {
     public ModelAndView showPersonal() {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("departments",departmentService.findAll());
-        mav.addObject("contentForm", "layouts/personalForm");
+        mav.addObject("contentForm", "layouts/personal");
         return mav;
     }
 
@@ -41,7 +41,7 @@ public class PersonalController {
     public ModelAndView updatePersonal(@ModelAttribute("personal") Personal personal) {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("personal", personalService.updatePersonal(personal));
-        mav.addObject("contentForm", "layouts/personalForm");
+        mav.addObject("contentForm", "layouts/personal");
         return mav;
     }
 
