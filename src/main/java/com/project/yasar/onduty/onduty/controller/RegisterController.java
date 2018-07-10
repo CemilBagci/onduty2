@@ -56,8 +56,20 @@ public class RegisterController {
     public ModelAndView updateRegisterForm(@PathVariable("id") Long id) {
         ModelAndView mav = new ModelAndView("layouts/registerForm");
         User user = userService.get(id);
-        mav.addObject("user", user);
-        mav.addObject("user", userService.findAll());
+        UserRegister userRegister = new UserRegister();
+        Personal personalByUser = personalService.findPersonalByUser(user);
+        userRegister.setDepartments(personalByUser.getDepartments());
+        userRegister.setEmail(user.getEmail());
+        userRegister.setName(user.getName());
+        userRegister.setPassword(user.getPassword());
+        userRegister.setId(user.getId());
+        userRegister.setState(user.getState());
+        userRegister.setSurname(user.getSurname());
+        userRegister.setUsername(user.getUsername());
+
+        mav.addObject("userRegister", userRegister);
+        //mav.addObject("user", userService.findAll());
+        mav.addObject("departments",departmentService.findAll());
 
         return mav;
     }

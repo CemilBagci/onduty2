@@ -26,10 +26,10 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private PersonalService personalService;
-    
+
     @Autowired
     private RoleRepository roleService;
 
@@ -68,20 +68,28 @@ public class UserServiceImpl implements UserService {
     public User get(Long id) {
         return userRepository.findOne(id);
     }
-    
+
     @Override
     @Transactional(readOnly = false)
-    public void saveUser(UserRegister userRegister)  {
-    	
-    	User user = new User(userRegister.getName(), userRegister.getSurname()
-        		, userRegister.getEmail(), new ArrayList<>(), userRegister.getUsername()
-        		, userRegister.getPassword(), userRegister.getState());
-        
+    public void saveUser(UserRegister userRegister) {
+
+        User user = new User(userRegister.getId(), userRegister.getName(), userRegister.getSurname()
+                , userRegister.getEmail(), new ArrayList<>(), userRegister.getUsername()
+                , userRegister.getPassword(), userRegister.getState());
+
         Role roleUser = roleService.findRoleByRoleNameEquals("ROLE_USER");
         user.setRoles(new ArrayList<>(Arrays.asList(roleUser)));
-        
+
         user = createUser(user);
-        Personal personal = new Personal(user, userRegister.getDepartments(), new HashSet<>());
+        Personal personalByUser = personalService.findPersonalByUser(user);
+        Personal personal;
+        if (personalByUser == null) {
+            personal = new Personal(user, userRegister.getDepartments(), new HashSet<>());
+        } else {
+            personalByUser.setDepartments(userRegister.getDepartments());
+            personal = personalByUser;
+        }
+
         personalService.createPersonal(personal);
     }
 

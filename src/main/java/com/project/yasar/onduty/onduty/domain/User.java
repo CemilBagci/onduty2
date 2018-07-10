@@ -28,7 +28,8 @@ public class User {
     private String password;
     @Column
     private State state;
-    public User(String name, String surname, String email, List<Role> roles, String username, String password,State state) {
+    public User(Long id,String name, String surname, String email, List<Role> roles, String username, String password,State state) {
+        this.id=id;
         this.name = name;
         this.surname = surname;
         this.email = email;

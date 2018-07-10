@@ -1,8 +1,6 @@
 package com.project.yasar.onduty.onduty.service;
 
-import com.project.yasar.onduty.onduty.domain.Personal;
-import com.project.yasar.onduty.onduty.domain.Project;
-import com.project.yasar.onduty.onduty.domain.Task;
+import com.project.yasar.onduty.onduty.domain.*;
 import com.project.yasar.onduty.onduty.repository.ProjectRepository;
 
 import java.util.List;
@@ -47,6 +45,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Boolean delete(Long id) {
         try {
             Project project = projectRepository.findOne(id);
+
             projectRepository.delete(project);
 
             return true;

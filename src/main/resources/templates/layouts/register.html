@@ -59,25 +59,26 @@
             </div>
         </div>
     </div>
+
+    <div th:replace="layouts/registerForm :: registerForm"></div>
+
+    <div id="modalDiv"></div>
+
+    <script th:inline="javascript">
+
+        this.updateItem = function (id) {
+            $.get('register/' + id+'/updateForm', (data) => {
+                $(data).modal('show')
+            setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+        })
+        }
+        this.removeItem = function (id) {
+            $.get('register/' + id+'/delete', (data) => {
+                location.reload();
+        })
+        }
+    </script>
+
+
 </div>
-
-<div th:replace="layouts/registerForm :: registerForm"></div>
-
-<div id="modalDiv"></div>
-
-<script th:inline="javascript">
-
-    this.updateItem = function (id) {
-        $.get('register/' + id+'/updateForm', (data) => {
-            $(data).modal('show')
-        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
-    })
-    }
-    this.removeItem = function (id) {
-        $.get('register/' + id+'/delete', (data) => {
-            location.reload();
-    })
-    }
-</script>
-
 
