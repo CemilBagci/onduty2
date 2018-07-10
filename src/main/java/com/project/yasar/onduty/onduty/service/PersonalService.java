@@ -16,6 +16,6 @@ public interface PersonalService {
 	Personal findPersonalByUser(User user);  //+ kullan diğerlerinde?
 	// -  Personal findPersonalByGroups(List<Group> groups); // bu silinecek
 	Personal getCurrentPersonal(); // +
-
+	Boolean delete(Long id);
     List<Personal> findAll();
 }

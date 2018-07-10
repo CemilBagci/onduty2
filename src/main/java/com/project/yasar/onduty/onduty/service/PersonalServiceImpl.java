@@ -60,6 +60,20 @@ public class PersonalServiceImpl implements PersonalService {
     }
 
     @Override
+    @Transactional(readOnly = false)
+    public Boolean delete(Long id) {
+        try {
+            Personal personal = personalRepository.findOne(id);
+            personalRepository.delete(personal);
+
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public List<Personal> findAll() {
         return StreamSupport.stream(personalRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
