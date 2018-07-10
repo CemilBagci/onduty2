@@ -39,7 +39,7 @@ public class DummyDataServiceImpl implements DummyDataService {
         }
         User user = userService.findUserByUsernameEquals("1");
         if (user == null) {
-            user = new User("admin", "admin", "admin", new ArrayList<>(Collections.singletonList(roleAdmin)), "admin", "admin", State.ACTIVE);
+            user = new User("1", "1", "1", new ArrayList<>(Collections.singletonList(roleAdmin)), "1", "1", State.ACTIVE);
             user = userService.createUser(user);
         }
 
@@ -67,7 +67,6 @@ public class DummyDataServiceImpl implements DummyDataService {
             departmentService.createDepartment(department5);
             departmentService.createDepartment(department6);
             departmentService.createDepartment(department7);
-
 
         }
 
