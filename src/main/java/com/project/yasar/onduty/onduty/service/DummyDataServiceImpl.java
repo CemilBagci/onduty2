@@ -52,10 +52,22 @@ public class DummyDataServiceImpl implements DummyDataService {
 
         List<Department> all = departmentService.findAll();
         if (all.size() == 0) {
-            Department department = new Department("office");
-            Department department2 = new Department("office2");
+            Department department = new Department("Java Technologies");
+            Department department2 = new Department("Mobile Technologies");
+            Department department3 = new Department("Information Technologies");
+            Department department4 = new Department("Human Resources");
+            Department department5 = new Department("System and Network Security");
+            Department department6 = new Department("Digital Technologies");
+            Department department7 = new Department("ERP and SAP Technologies");
+
             departmentService.createDepartment(department);
             departmentService.createDepartment(department2);
+            departmentService.createDepartment(department3);
+            departmentService.createDepartment(department4);
+            departmentService.createDepartment(department5);
+            departmentService.createDepartment(department6);
+            departmentService.createDepartment(department7);
+
 
         }
 
