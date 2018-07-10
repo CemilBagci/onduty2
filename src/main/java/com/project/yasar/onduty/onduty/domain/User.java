@@ -22,8 +22,6 @@ public class User {
     private List<Role> roles = new ArrayList<Role>();
     
     
-    
-    
     @Column(unique = true)
     private String username;
     @Column
@@ -40,7 +38,7 @@ public class User {
         this.state = state;
     }
 
-    public User() {
+	public User() {
     }
 
     public long getId() {

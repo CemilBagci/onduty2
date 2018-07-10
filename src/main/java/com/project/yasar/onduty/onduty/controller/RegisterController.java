@@ -5,6 +5,8 @@ import com.project.yasar.onduty.onduty.service.DepartmentService;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.RoleService;
 import com.project.yasar.onduty.onduty.service.UserService;
+import com.project.yasar.onduty.onduty.viewmodel.UserRegister;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -35,6 +37,7 @@ public class RegisterController {
     public ModelAndView showUsers() {
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("user", new User());
+        mav.addObject("userRegister", new UserRegister());
         mav.addObject("users", userService.findAll());
         mav.addObject("departments",departmentService.findAll());
         mav.addObject("contentForm", "layouts/register");
@@ -42,14 +45,9 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView createUser(User user, BindingResult bindingResult) {
+    public ModelAndView createUser(UserRegister userRegister, BindingResult bindingResult) {
         ModelAndView mav = new ModelAndView(new RedirectView("/register", true));
-        Role roleUser = roleService.findRoleByRoleNameEquals("ROLE_USER");
-        user.setRoles(new ArrayList<>(Arrays.asList(roleUser)));
-        user = userService.createUser(user);
-        userService.createUser(user);
-        Personal personal = new Personal(user, new ArrayList<>(), new HashSet<>());
-        personalService.createPersonal(personal);
+        userService.saveUser(userRegister);
         return mav;
     }
 
@@ -66,7 +64,8 @@ public class RegisterController {
     @RequestMapping(value = "/register/{id}/delete", method = RequestMethod.GET)
     @ResponseBody
     public Boolean deleteUser(@PathVariable("id") Long id) {
-        return userService.delete(id);
+        return userService.delete(id); 
+        
 
     }
 

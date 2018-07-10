@@ -2,7 +2,7 @@
 <div th:fragment="registerForm" class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form th:object="${user}" th:action="@{/register}" method="POST">
+            <form th:object="${userRegister}" th:action="@{/register}" method="POST">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">&times;</span></button>
@@ -17,15 +17,13 @@
                         <span>State</span><input class="form-control" th:field="*{state}"/>
                         <span>Username</span><input class="form-control" th:field="*{username}"/>
                         <span>Password</span><input class="form-control" th:field="*{password}"/>
-                        <span>Department:</span><select class="selectpicker" multiple="multiple" data-container="content" id="departments">
+                        
+                        <span>Department:</span><select class="selectpicker" multiple="multiple" data-container="content" th:field="*{departments}">
                         <option th:each="department:${departments}"
                                 th:text="${department.departmentName}"
                                 th:value="${department.id}"></option>
                     </select>
-
-
-
-                    </div>
+      </div>
 
 
                 </div>

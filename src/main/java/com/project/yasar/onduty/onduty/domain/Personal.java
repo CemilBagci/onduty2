@@ -13,11 +13,11 @@ public class Personal {
     private long id;
     
     @JoinColumn
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private User user;
 
     @JoinColumn
-    @ManyToMany(cascade = CascadeType.DETACH)
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
     private List<Department> departments = new ArrayList<Department>();
 
     public List<Department> getDepartments() {
