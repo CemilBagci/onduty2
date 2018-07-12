@@ -6,7 +6,7 @@
 
 
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#myModal">CreateProject</button>
+                        <button type="button" class="btn btn-default" onclick="showModalForNewProject()" >CreateProject</button>
 
 
                     </div>
@@ -60,23 +60,31 @@
     </div>
 </div>
 
- <div th:replace="layouts/projectForm :: projectForm"></div>
+ 
+<div id="newProjectModalDiv">
+		<div th:replace="layouts/projectForm :: projectForm"></div>
+	</div>
 
-<div id="modalDiv"></div>
+	<div id="modalDiv"></div>
 
-<script th:inline="javascript">
+    <script th:inline="javascript">
 
-    this.updateItem = function (id) {
-        $.get('projects/' + id+'/updateForm', (data) => {
-            $(data).modal('show')
-        setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
-    })
-    }
-    this.removeItem = function (id) {
-        $.get('projects/' + id+'/delete', (data) => {
-            location.reload();
-    })
-    }
+    	function showModalForNewProject() {
+    		$("#newProjectModalDiv > #myModal").modal();
+    	}
+    
+        this.updateItem = function (id) {
+            $.get('projects/' + id+'/updateForm', (data) => {
+            	$("#modalDiv").html(data);
+            	$("#modalDiv > #myModal").modal();
+            setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
+        })
+        }
+        this.removeItem = function (id) {
+            $.get('projects/' + id+'/delete', (data) => {
+                location.reload();
+        })
+        }
 </script>
 
 

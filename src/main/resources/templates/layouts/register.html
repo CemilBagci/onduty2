@@ -6,7 +6,7 @@
 
 
                     <div class="btn-group" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default"  data-toggle="modal" data-target="#myModal">CreateUser</button>
+                        <button type="button" class="btn btn-default"  onclick="showModalForNewUser()">CreateUser</button>
 
 
                     </div>
@@ -60,15 +60,22 @@
         </div>
     </div>
 
-    <div th:replace="layouts/registerForm :: registerForm"></div>
+	<div id="newUserModalDiv">
+		<div th:replace="layouts/registerForm :: registerForm"></div>
+	</div>
 
-    <div id="modalDiv"></div>
+	<div id="modalDiv"></div>
 
     <script th:inline="javascript">
 
+    	function showModalForNewUser() {
+    		$("#newUserModalDiv > #myModal").modal();
+    	}
+    
         this.updateItem = function (id) {
             $.get('register/' + id+'/updateForm', (data) => {
-                $(data).modal('show')
+            	$("#modalDiv").html(data);
+            	$("#modalDiv > #myModal").modal();
             setTimeout(function(){ $('.selectpicker').selectpicker() }, 500);
         })
         }
