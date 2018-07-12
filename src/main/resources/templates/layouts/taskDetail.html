@@ -121,9 +121,19 @@
         </div>
     </div>
     <style>
+  
         .row {
             margin-top:5px
         }
+        
+        #messageListDOM {
+		    background-color: #eee;
+		    width: 500px;
+		    height: 200px;
+		    border: 1px dotted black;
+		    overflow: scroll;
+		}
+		
     </style>
     <script th:inline="javascript">
         var taskId= /*[[${task.id}]]*/
