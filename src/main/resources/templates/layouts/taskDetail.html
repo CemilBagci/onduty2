@@ -93,6 +93,17 @@
                                 <input type="button" value="Send"/>
                             </div>
                         </div>
+                        <div class="row">
+                                <div class="col-md-6"><span>StateTask</span></div>
+                                <div class="col-md-6">
+                                    <select class="selectpicker form-control" data-container="content"
+                                            name="statetask" disabled="disabled">
+                                        <option th:each="statetask:${T(com.project.yasar.onduty.onduty.domain.StateTask).values()}"
+                                                th:text="${statetask.toString()}"
+                                                th:value="${statetask.name()}"></option>
+                                    </select>
+                                </div>
+                            </div>
                     </div>
 
 

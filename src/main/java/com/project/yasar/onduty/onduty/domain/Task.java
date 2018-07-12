@@ -22,6 +22,8 @@ public class Task {
     @Enumerated(EnumType.ORDINAL)
     private TaskStateType taskstatetype;
     
+    @Enumerated(EnumType.ORDINAL)
+    private StateTask  statetask;
     
     @JoinColumn(nullable = false)
     @ManyToOne(cascade = CascadeType.DETACH)
@@ -52,9 +54,10 @@ public class Task {
     @Column
     private Date taskenddate;
 
-    public Task(String name, TaskStateType taskstatetype, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Date taskstartdate, Date taskenddate, Project project) {
+    public Task(String name, TaskStateType taskstatetype, StateTask statetask, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Date taskstartdate, Date taskenddate, Project project) {
         this.name = name;
         this.taskstatetype = taskstatetype;
+        this.statetask = statetask;
         this.assignerPersonal = assignerPersonal;
         this.assigneePersonals = assigneePersonals;
         this.taskpriority = taskpriority;
@@ -146,5 +149,15 @@ public class Task {
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+	public StateTask getStatetask() {
+		return statetask;
+	}
+
+
+	public void setStatetask(StateTask statetask) {
+		this.statetask = statetask;
+	}
 }
 

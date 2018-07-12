@@ -37,6 +37,12 @@
                         </select>
                         <p></p>
                          <span>TaskDescription</span><input class="form-control" th:field="*{description}"/>
+                         <span>StateTask</span> <select class="selectpicker"  data-container="content"
+                                                               name="statetask">
+                        <option th:each="statetask:${T(com.project.yasar.onduty.onduty.domain.StateTask).values()}"
+                                th:text="${statetask.toString()}"
+                                th:value="${statetask.name()}"></option>
+                    </select>
                     </div>
 
 
