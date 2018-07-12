@@ -4,17 +4,17 @@ public enum TaskPriority {
     high {
         @Override
         public String toString() {
-            return "Yüksek";
+            return "High";
         }
     }, middle {
         @Override
         public String toString() {
-            return "Orta";
+            return "Middle";
         }
     }, low {
         @Override
         public String toString() {
-            return "Düşük";
+            return "Low";
         }
     };
 
