@@ -1608,6 +1608,10 @@ pre code {
   margin-right: auto;
   margin-left: auto;
 }
+
+
+
+
 .row {
   margin-right: -15px;
   margin-left: -15px;
@@ -4910,7 +4914,7 @@ a.label:focus {
   background-color: #449d44;
 }
 .label-info {
-  background-color: #5bc0de;
+  background-color: #efad49;
 }
 .label-info[href]:hover,
 .label-info[href]:focus {
