@@ -54,6 +54,11 @@ public class Task {
     @Column
     private Date taskenddate;
 
+
+    @JoinColumn
+    @OneToMany( cascade = CascadeType.ALL)
+    private List<TaskMessage> taskMessages;
+
     public Task(String name, TaskStateType taskstatetype, StateTask statetask, Personal assignerPersonal, List<Personal> assigneePersonals, TaskPriority taskpriority, Date taskstartdate, Date taskenddate, Project project) {
         this.name = name;
         this.taskstatetype = taskstatetype;
@@ -159,5 +164,13 @@ public class Task {
 	public void setStatetask(StateTask statetask) {
 		this.statetask = statetask;
 	}
+
+    public List<TaskMessage> getTaskMessages() {
+        return taskMessages;
+    }
+
+    public void setTaskMessages(List<TaskMessage> taskMessages) {
+        this.taskMessages = taskMessages;
+    }
 }
 

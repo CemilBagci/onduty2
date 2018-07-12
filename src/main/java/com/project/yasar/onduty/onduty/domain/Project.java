@@ -31,7 +31,7 @@ public class Project {
     @Enumerated(EnumType.ORDINAL)
     private StateType statetype;
     
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<Task>();
 
     @JoinColumn(name="personal_id")

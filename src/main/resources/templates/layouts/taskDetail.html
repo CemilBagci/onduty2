@@ -1,6 +1,6 @@
 <div th:fragment="taskDetail" class="modal fade" id="myModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel">
-    <div class="modal-dialog" style=" width: 750px;  margin: auto;" role="document">
+    <div class="modal-dialog" style=" width: 1100px;  margin: auto;" role="document">
         <div class="modal-content">
             <form th:object="${task}" th:action="@{/tasks}" method="POST" >
                 <div class="modal-header">
@@ -83,16 +83,19 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="col-md-6">
-                            <div class="row">
-                                <div>Ahmet : mesaj 1</div>
-                                <div>Mehmet : mesaj 2</div>
+
+                            <div th:replace="layouts/messageList::messageList">
                             </div>
                             <div class="row">
-                                <input type="text" multiple="multiple"/>
-                                <input type="button" value="Send"/>
+                                <input type="text" id="messageInput" multiple="multiple"/>
+                                <input type="button" id="messageSend" value="Send"/>
                             </div>
                         </div>
+
+
+
                         <div class="row">
                                 <div class="col-md-6"><span>StateTask</span></div>
                                 <div class="col-md-6">
@@ -105,6 +108,8 @@
                                 </div>
                             </div>
                     </div>
+
+
 
 
                 </div>
@@ -120,4 +125,15 @@
             margin-top:5px
         }
     </style>
+    <script th:inline="javascript">
+        var taskId= /*[[${task.id}]]*/
+        $('#messageSend').on('click',()=>{
+            var messageContent = $('#messageInput').val()
+            $.post('messages/task/'+taskId, { content: messageContent })
+                .done(function( data ) {
+                    $('#messageListDOM').empty()
+                    $('#messageListDOM').append(data);
+                });
+        })
+    </script>
 </div>

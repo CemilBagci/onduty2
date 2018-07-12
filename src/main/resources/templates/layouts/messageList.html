@@ -1,0 +1,12 @@
+<div th:fragment="messageList" class="row" id="messageListDOM">
+
+    <div th:each="taskMessage:${taskMessages}">
+        <div class="col-md-12 row">
+            <div class="col-md-3" th:text="${taskMessage.personal.user.username}"></div>
+            <div class="col-md-6" th:text="${taskMessage.content}"></div>
+            <div class="col-md-3 ">
+                <span class="label label-info" th:text="${taskMessage.sendDate}"></span>
+            </div>
+        </div>
+    </div>
+</div>

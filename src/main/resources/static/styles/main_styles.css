@@ -59,6 +59,9 @@ div
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+
+
 .div2
 {
 	display: block;
@@ -67,6 +70,8 @@ div
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
+
+
 ul
 {
 	list-style: none;

@@ -13,22 +13,19 @@ public class TaskMessage {
     @Column
     private String content;
     @Column
-    private Date enrtyDate;
+    private Date sendDate;
     
     @JoinColumn
     @ManyToOne(cascade = CascadeType.DETACH)
     private Personal personal;
-    
-    
-    @JoinColumn
-    @ManyToOne(cascade = CascadeType.DETACH)
-    private Task task;
 
-    public TaskMessage(String content, Date enrtyDate, Personal personal, Task task) {
+    public TaskMessage() {
+    }
+
+    public TaskMessage(String content, Date sendDate, Personal personal) {
         this.content = content;
-        this.enrtyDate = enrtyDate;
+        this.sendDate = sendDate;
         this.personal = personal;
-        this.task = task;
     }
 
     public long getId() {
@@ -47,12 +44,12 @@ public class TaskMessage {
         this.content = content;
     }
 
-    public Date getEnrtyDate() {
-        return enrtyDate;
+    public Date getSendDate() {
+        return sendDate;
     }
 
-    public void setEnrtyDate(Date enrtyDate) {
-        this.enrtyDate = enrtyDate;
+    public void setSendDate(Date sendDate) {
+        this.sendDate = sendDate;
     }
 
     public Personal getPersonal() {
@@ -63,11 +60,4 @@ public class TaskMessage {
         this.personal = personal;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
 }

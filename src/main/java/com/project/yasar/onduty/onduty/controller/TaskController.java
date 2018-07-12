@@ -5,8 +5,10 @@ package com.project.yasar.onduty.onduty.controller;
 import com.project.yasar.onduty.onduty.domain.Personal;
 import com.project.yasar.onduty.onduty.domain.Project;
 import com.project.yasar.onduty.onduty.domain.Task;
+import com.project.yasar.onduty.onduty.domain.TaskMessage;
 import com.project.yasar.onduty.onduty.service.PersonalService;
 import com.project.yasar.onduty.onduty.service.ProjectService;
+import com.project.yasar.onduty.onduty.service.TaskMessageService;
 import com.project.yasar.onduty.onduty.service.TaskService;
 
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,11 +39,15 @@ public class TaskController {
     @Autowired
     PersonalService personalService;
 
+    @Autowired
+    private TaskMessageService taskMessageService;
+
     @RequestMapping(value = {"/task/{id}"}, method = RequestMethod.GET)
     public ModelAndView showTask(@RequestParam Long id) {
         Task task = taskService.get(id);
         ModelAndView mav = new ModelAndView("main");
         mav.addObject("task", task);
+
         mav.addObject("contentForm", "layouts/tasks");
         return mav;
     }
@@ -112,9 +119,24 @@ public class TaskController {
     public ModelAndView showDetail(@PathVariable("id") Long id) {
         ModelAndView mav = new ModelAndView("layouts/taskDetail");
         Task task = taskService.get(id);
+        List<TaskMessage> taskMessages = task.getTaskMessages();
+        mav.addObject("taskMessages", taskMessages);
         mav.addObject("task", task);
         mav.addObject("personals", personalService.findAll());
         mav.addObject("projects", projectService.findAll());
+        return mav;
+    }
+
+    @RequestMapping(value = "/messages/task/{taskId}", method = RequestMethod.POST)
+    @ResponseBody
+    public ModelAndView listMessageList(@PathVariable("taskId") Long taskId, @RequestParam("content") String content) {
+        Personal currentPersonal = personalService.getCurrentPersonal();
+        Task task = taskService.get(taskId);
+        TaskMessage taskMessage = new TaskMessage(content,new Date(), currentPersonal);
+        task.getTaskMessages().add(taskMessage);
+        task =taskService.createTask(task);
+        ModelAndView mav = new ModelAndView("layouts/messageList");
+        mav.addObject("taskMessages",task.getTaskMessages());
         return mav;
     }
 }

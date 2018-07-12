@@ -4867,6 +4867,14 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
   vertical-align: baseline;
   border-radius: .25em;
 }
+
+
+iv.ex1 {
+  background-color: lightblue;
+  widthd: 110px;
+  height: 110px;
+  overflow: scroll;
+}
 a.label:hover,
 a.label:focus {
   color: #fff;
